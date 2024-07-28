@@ -4,7 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MainActivity">
+    tools:context=".VideoActivity">
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/framesRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/selectedFrameImageView"
@@ -12,7 +20,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/framesRecyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/slider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSelectVideo"
@@ -23,7 +31,8 @@
         class="androidx.recyclerview.widget.RecyclerView"
         android:layout_width="match_parent"
 
-        android:layout_height="100dp"
+        android:scrollbarFadeDuration="0"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:scrollbars="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,5 +45,15 @@
         android:layout_height="wrap_content"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="score"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSelectVideo"
+        app:layout_constraintStart_toEndOf="@+id/btnSelectVideo"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

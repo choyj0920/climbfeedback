@@ -12,10 +12,12 @@ import android.os.Bundle
 import android.view.SurfaceView
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.slider.Slider
 import com.hunsu.climbfeedback.util.VisualizationUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,6 +28,7 @@ import org.tensorflow.lite.examples.poseestimation.data.Device
 import org.tensorflow.lite.examples.poseestimation.data.Person
 import org.tensorflow.lite.examples.poseestimation.ml.ModelType
 import org.tensorflow.lite.examples.poseestimation.ml.MoveNet
+import kotlin.math.roundToInt
 
 
 class VideoActivity : AppCompatActivity() {
@@ -46,6 +49,7 @@ class VideoActivity : AppCompatActivity() {
 
     private lateinit var framesRecyclerView: RecyclerView
     private lateinit var selectedFrameImageView: ImageView
+    private lateinit var scoreTv: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +57,7 @@ class VideoActivity : AppCompatActivity() {
         // 동영상 선택 버튼 클릭 리스너 설정
         framesRecyclerView = findViewById(R.id.framesRecyclerView)
         selectedFrameImageView = findViewById(R.id.selectedFrameImageView)
+        scoreTv = findViewById(R.id.tvScore)
 
         initMovenet();
 
@@ -65,17 +70,58 @@ class VideoActivity : AppCompatActivity() {
 
 
     }
-    var MIN_CONFIDENCE =0.3
+    var MIN_CONFIDENCE =0.1
     fun setRv(){
+
+        // observe for first type of slider
+        val slider: Slider = findViewById(R.id.slider)
+        slider.value=0f
+        slider.valueFrom=0f
+        slider.stepSize=1.0f
+        slider.valueTo=frameImageList.size*1.0f
+
+        slider.addOnChangeListener { slider, value, fromUser ->
+            var index=value.roundToInt()
+            var selectedBitmap =frameImageList[index]
+
+            val outputBitmap = framePersonList[index]?.let {
+                VisualizationUtils.drawBodyKeypoints(selectedBitmap, it.filter { it.score > MIN_CONFIDENCE }, false)
+
+
+            }
+            if( framePersonList[index] !=null){
+                scoreTv.text= framePersonList[index]!!.first().score.toString();
+            }
+
+
+            val scaledBitmap = outputBitmap?.let {
+                Bitmap.createScaledBitmap(
+                    it,
+                    selectedFrameImageView.width,
+                    (outputBitmap.height * selectedFrameImageView.width / selectedFrameImageView.width),
+                    false
+                )
+            }
+
+
+
+            selectedFrameImageView.setImageBitmap(scaledBitmap)
+
+        }
+
+
         val framesAdapter = FramesAdapter(frameImageList) { selectedBitmap,index ->
 
             val outputBitmap = framePersonList[index]?.let {
-                VisualizationUtils.drawBodyKeypoints(
-                    selectedBitmap,
-                    it.filter { it.score > MIN_CONFIDENCE }, false
-                )
+                VisualizationUtils.drawBodyKeypoints(selectedBitmap, it.filter { it.score > MIN_CONFIDENCE }, false)
+
 
             }
+            if( framePersonList[index] !=null){
+                scoreTv.text= framePersonList[index]!!.first().score.toString();
+            }
+
+
             val scaledBitmap = outputBitmap?.let {
                 Bitmap.createScaledBitmap(
                     it,
@@ -167,7 +213,7 @@ class VideoActivity : AppCompatActivity() {
 
                 while (currentTime < duration) {
                     val frame = retriever.getFrameAtTime(currentTime * 1000, MediaMetadataRetriever.OPTION_CLOSEST_SYNC)
-                    frame?.let { frames.add(it) }
+                    frames.add(frame!!);
                     currentTime += frameIntervalMs
                 }
             }
