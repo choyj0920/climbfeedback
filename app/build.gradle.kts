@@ -53,4 +53,8 @@ dependencies {
     implementation("org.tensorflow:tensorflow-lite-gpu:2.5.0")
     implementation("org.tensorflow:tensorflow-lite-support:0.3.0")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
 }
