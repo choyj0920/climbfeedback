@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/cal_Fragment">
+
+    <fragment
+        android:id="@+id/cal_Fragment"
+        android:name="com.hunsu.climbfeedback.mainfrag.CalendarFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/video_Fragment"
+        android:name="com.hunsu.climbfeedback.mainfrag.VideoFragment"
+
+        android:label="BuildingFragment"
+        tools:layout="@layout/fragment_video" />
+
+    <fragment
+        android:id="@+id/book_Fragment"
+        android:name="com.hunsu.climbfeedback.mainfrag.BookFragment"
+
+        android:label="FacilityFragment"
+        tools:layout="@layout/fragment_book" />
+
+
+
+</navigation>
