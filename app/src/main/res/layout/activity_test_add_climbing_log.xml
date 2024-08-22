@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp">
+
+<EditText
+    android:id="@+id/etDate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="false"
+    android:hint="날짜 (예: 2024-08-22)" />
+
+<EditText
+    android:id="@+id/etTime"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="시간 (예: 14:30)" />
+
+<EditText
+    android:id="@+id/etLocation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="등반 장소" />
+
+<EditText
+    android:id="@+id/etFeedback"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="피드백 내용" />
+
+<EditText
+    android:id="@+id/etLogContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="일지 내용" />
+
+<EditText
+    android:id="@+id/etScore"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="점수 (0-100)" />
+
+<Button
+    android:id="@+id/btnSave"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/white"
+    android:text="저장하기"
+    android:onClick="saveClimbingLog"/>
+</LinearLayout>

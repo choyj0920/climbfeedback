@@ -7,12 +7,12 @@
     android:layout_marginRight="3dp"
     android:clipToPadding="false"
     android:layout_marginLeft="3dp"
-
     android:layout_height="wrap_content">
+
 
     <ImageView
         android:id="@+id/iv_date"
-        android:layout_width="match_parent"
+        android:layout_width="30dp"
         android:layout_height="30dp"
         android:maxHeight="45dp"
 
@@ -21,7 +21,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/ic_day_default" />
+        app:srcCompat="@drawable/ic_logo" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:progress="75"
+        android:id="@+id/track"
+        app:trackColor="@color/black"
+        app:indicatorColor="@color/mint"
+        app:trackCornerRadius="7dp"
+        app:indicatorSize="30dp"
+        app:trackThickness="2dp"
+        app:layout_constraintTop_toTopOf="@id/iv_date"
+        app:layout_constraintEnd_toEndOf="@id/iv_date"
+        app:layout_constraintStart_toStartOf="@id/iv_date"
+        app:layout_constraintBottom_toBottomOf="@id/iv_date"
+
+         android:layout_height="30dp" android:layout_width="30dp"/>
 
     <TextView
 

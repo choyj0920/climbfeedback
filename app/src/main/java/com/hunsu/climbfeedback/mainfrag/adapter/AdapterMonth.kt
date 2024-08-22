@@ -1,12 +1,13 @@
 package com.hunsu.climbfeedback.mainfrag.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.hunsu.climbfeedback.MainActivity
 import com.hunsu.climbfeedback.R
 import com.hunsu.climbfeedback.databinding.ItemMonthBinding
 import com.hunsu.climbfeedback.mainfrag.CalendarFragment
@@ -64,14 +65,20 @@ class AdapterMonth(var parent: CalendarFragment): RecyclerView.Adapter<AdapterMo
         }
 
         val dayListManager = GridLayoutManager(this.parent.requireContext(), 7)
-        val dayListAdapter = AdapterDay(tempMonth, dayList)
+        val dayListAdapter = AdapterDay(parent,tempMonth, dayList,parent.viewModel.climbingLogs)
 
 
 
-        holder.rvcalendar.apply {
-            layoutManager=dayListManager
-            adapter=dayListAdapter
-        }
+
+        parent.viewModel.updatetime.observe(parent.viewLifecycleOwner,Observer{
+            val _dayListAdapter = AdapterDay(parent,tempMonth, dayList,parent.viewModel.climbingLogs)
+            holder.rvcalendar.apply {
+                layoutManager=dayListManager
+                adapter=_dayListAdapter
+            }
+        })
+
+
     }
 
     override fun getItemCount(): Int {
