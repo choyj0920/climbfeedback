@@ -12,18 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Climbfeedback"
         tools:targetApi="31">
-
         <activity
-            android:name=".VideoActivity"
+            android:name=".db.data.TestAddClimbingLogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
+        <activity
+            android:name=".VideoActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

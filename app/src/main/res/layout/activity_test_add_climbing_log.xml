@@ -17,6 +17,7 @@ android:padding="16dp">
     android:id="@+id/etTime"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:text="12:30"
     android:hint="시간 (예: 14:30)" />
 
 <EditText
@@ -35,15 +36,29 @@ android:padding="16dp">
     android:id="@+id/etLogContent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:text="일지 내용"
     android:hint="일지 내용" />
 
-<EditText
-    android:id="@+id/etScore"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="점수 (0-100)" />
 
-<Button
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안정성 점수"
+        android:textSize="20dp"
+        />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sliderScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stepSize="1"
+        android:value="5"
+        android:valueFrom="0"
+        android:valueTo="100"
+
+        />
+
+    <Button
     android:id="@+id/btnSave"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

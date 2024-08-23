@@ -9,12 +9,15 @@ import androidx.fragment.app.viewModels
 import com.hunsu.climbfeedback.MainActivity
 import com.hunsu.climbfeedback.databinding.ActivityTestAddClimbingLogBinding
 import com.hunsu.climbfeedback.db.ClimbingLogDatabaseHelper
+import kotlin.math.roundToInt
 
 class TestAddClimbingLogActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTestAddClimbingLogBinding
     private lateinit var dbHelper: ClimbingLogDatabaseHelper
 
     lateinit var viewModel: ClimbingLogViewModel
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +42,7 @@ class TestAddClimbingLogActivity : AppCompatActivity() {
         val location = binding.etLocation.text.toString()
         val feedback = binding.etFeedback.text.toString()
         val logContent = binding.etLogContent.text.toString()
-        val score = binding.etScore.text.toString().toIntOrNull() ?: 0
+        val score = binding.sliderScore.value.roundToInt()
 
         // 빈 값을 체크하고, 저장 로직을 수행
         if (date.isNotEmpty() && logContent.isNotEmpty()) {

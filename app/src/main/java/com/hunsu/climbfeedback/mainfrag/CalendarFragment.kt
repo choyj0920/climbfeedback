@@ -2,6 +2,7 @@ package com.hunsu.climbfeedback.mainfrag
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -59,6 +60,13 @@ class CalendarFragment : Fragment() {
         setBottomText()
         updaterv()
     }
+
+    override fun onStart() {
+        super.onStart()
+        setBottomText()
+        updaterv()
+    }
+
     fun getData(){
 
         val dbHelper = ClimbingLogDatabaseHelper(requireContext())

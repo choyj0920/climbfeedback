@@ -46,6 +46,8 @@ class ClimbingLogViewModel : ViewModel() {
         cursor.close()
 
         climbingLogs = logs;
+
+        db.close()
     }
 
     fun addClimbingLog(dbHelper: ClimbingLogDatabaseHelper, date: String, time: String, location: String, feedback: String, logContent: String, climbingImage: ByteArray, score: Int){
