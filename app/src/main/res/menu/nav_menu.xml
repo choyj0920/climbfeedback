@@ -5,17 +5,11 @@
         android:id="@+id/cal_Fragment"
         android:icon="@drawable/ic_cal"
         android:title="달력"/>
-
-
     <item
-        android:id="@+id/video_Fragment"
-        android:icon="@drawable/ic_video"
-        android:title="비디오"/>
+        android:id="@+id/placeholder"
+        android:title=""/>
     <item
         android:id="@+id/book_Fragment"
         android:icon="@drawable/ic_book"
         android:title="북"/>
-
-
-
 </menu>

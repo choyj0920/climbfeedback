@@ -9,22 +9,22 @@
         android:id="@+id/cal_Fragment"
         android:name="com.hunsu.climbfeedback.mainfrag.CalendarFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_cal_Fragment_to_video_Fragment"
+            app:destination="@id/video_Fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/video_Fragment"
         android:name="com.hunsu.climbfeedback.mainfrag.VideoFragment"
-
         android:label="BuildingFragment"
         tools:layout="@layout/fragment_video" />
 
     <fragment
         android:id="@+id/book_Fragment"
         android:name="com.hunsu.climbfeedback.mainfrag.BookFragment"
-
         android:label="FacilityFragment"
         tools:layout="@layout/fragment_book" />
-
-
 
 </navigation>
