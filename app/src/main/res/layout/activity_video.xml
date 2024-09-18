@@ -10,6 +10,8 @@
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:contentDescription="Adjust video playback speed"
+        android:backgroundTint="@color/mintColor"
         app:layout_constraintBottom_toTopOf="@+id/framesRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -23,7 +25,7 @@
         app:layout_constraintBottom_toTopOf="@+id/slider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSelectVideo"
+        app:layout_constraintTop_toBottomOf="@+id/btnBack"
         tools:ignore="Suspicious0dp" />
 
     <view
@@ -40,20 +42,34 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnSelectVideo"
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="이전"
+        android:backgroundTint="@color/mintColor"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- activity_video.xml에 추가 -->
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="다음"
+        android:backgroundTint="@color/mintColor"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="score"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSelectVideo"
-        app:layout_constraintStart_toEndOf="@+id/btnSelectVideo"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
