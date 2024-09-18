@@ -26,6 +26,7 @@ import kotlin.math.max
 object VisualizationUtils {
     /** Radius of circle used to draw keypoints.  */
     private const val CIRCLE_RADIUS = 6f
+    private const val CIRCLE_RADIUS_LARGE = 9f
 
     /** Width of line used to connected two keypoints.  */
     private const val LINE_WIDTH = 4f
@@ -38,38 +39,37 @@ object VisualizationUtils {
 
     /** Pair of keypoints to draw lines between.  */
     private val bodyJoints = listOf(
-        Pair(BodyPart.NOSE, BodyPart.LEFT_EYE),
-        Pair(BodyPart.NOSE, BodyPart.RIGHT_EYE),
-        Pair(BodyPart.LEFT_EYE, BodyPart.LEFT_EAR),
-        Pair(BodyPart.RIGHT_EYE, BodyPart.RIGHT_EAR),
-        Pair(BodyPart.NOSE, BodyPart.LEFT_SHOULDER),
-        Pair(BodyPart.NOSE, BodyPart.RIGHT_SHOULDER),
-        Pair(BodyPart.LEFT_SHOULDER, BodyPart.LEFT_ELBOW),
-        Pair(BodyPart.LEFT_ELBOW, BodyPart.LEFT_WRIST),
-        Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_ELBOW),
-        Pair(BodyPart.RIGHT_ELBOW, BodyPart.RIGHT_WRIST),
-        Pair(BodyPart.LEFT_SHOULDER, BodyPart.RIGHT_SHOULDER),
-        Pair(BodyPart.LEFT_SHOULDER, BodyPart.LEFT_HIP),
-        Pair(BodyPart.RIGHT_SHOULDER, BodyPart.RIGHT_HIP),
-        Pair(BodyPart.LEFT_HIP, BodyPart.RIGHT_HIP),
-        Pair(BodyPart.LEFT_HIP, BodyPart.LEFT_KNEE),
-        Pair(BodyPart.LEFT_KNEE, BodyPart.LEFT_ANKLE),
-        Pair(BodyPart.RIGHT_HIP, BodyPart.RIGHT_KNEE),
-        Pair(BodyPart.RIGHT_KNEE, BodyPart.RIGHT_ANKLE)
+        Pair(BodyPart.LEFT_WRIST, BodyPart.RIGHT_WRIST),
+        Pair(BodyPart.RIGHT_WRIST, BodyPart.RIGHT_ANKLE),
+        Pair(BodyPart.RIGHT_ANKLE, BodyPart.LEFT_ANKLE),
+        Pair(BodyPart.LEFT_ANKLE, BodyPart.LEFT_WRIST)
     )
 
     // Draw line and point indicate body pose
     fun drawBodyKeypoints(
         input: Bitmap,
         persons: List<Person>,
-        isTrackerEnabled: Boolean = false
+        isTrackerEnabled: Boolean = false,
+        haveError: Boolean
     ): Bitmap {
         val paintCircle = Paint().apply {
             strokeWidth = CIRCLE_RADIUS
-            color = Color.RED
+            color = Color.YELLOW
+            style = Paint.Style.FILL
+        }
+        val paintCircle_2 = Paint().apply {
+            strokeWidth = CIRCLE_RADIUS_LARGE
+            color = Color.BLUE
             style = Paint.Style.FILL
         }
         val paintLine = Paint().apply {
+            strokeWidth = LINE_WIDTH
+            color = Color.GREEN
+            style = Paint.Style.STROKE
+        }
+
+        // 240822 추가 - 잘못된 자세일 시 빨간 선으로 표시
+        val paintLineInvalid = Paint().apply {
             strokeWidth = LINE_WIDTH
             color = Color.RED
             style = Paint.Style.STROKE
@@ -102,9 +102,13 @@ object VisualizationUtils {
             bodyJoints.forEach {
                 val pointA = person.keyPoints[it.first.position].coordinate
                 val pointB = person.keyPoints[it.second.position].coordinate
-                originalSizeCanvas.drawLine(pointA.x, pointA.y, pointB.x, pointB.y, paintLine)
+                if(!haveError)
+                    originalSizeCanvas.drawLine(pointA.x, pointA.y, pointB.x, pointB.y, paintLine)
+                else
+                    originalSizeCanvas.drawLine(pointA.x, pointA.y, pointB.x, pointB.y, paintLineInvalid)
             }
 
+            // Draw each keypoints
             person.keyPoints.forEach { point ->
                 originalSizeCanvas.drawCircle(
                     point.coordinate.x,
@@ -113,6 +117,14 @@ object VisualizationUtils {
                     paintCircle
                 )
             }
+
+            // Draw center of weight G
+            originalSizeCanvas.drawCircle(
+                (person.keyPoints.get(9).coordinate.x + person.keyPoints.get(10).coordinate.x + 2*(person.keyPoints.get(11).coordinate.x + person.keyPoints.get(12).coordinate.x) + person.keyPoints.get(15).coordinate.x + person.keyPoints.get(16).coordinate.x)/8,
+                (person.keyPoints.get(9).coordinate.y + person.keyPoints.get(10).coordinate.y + 2*(person.keyPoints.get(11).coordinate.y + person.keyPoints.get(12).coordinate.y) + person.keyPoints.get(15).coordinate.y + person.keyPoints.get(16).coordinate.y)/8,
+                CIRCLE_RADIUS_LARGE,
+                paintCircle_2
+            )
         }
         return output
     }
