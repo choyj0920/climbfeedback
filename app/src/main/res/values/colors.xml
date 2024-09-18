@@ -12,4 +12,6 @@
     <color name="mint">#64FFCE</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="mintColor">#3EB489</color> <!-- 민트색 추가 -->
+
 </resources>
