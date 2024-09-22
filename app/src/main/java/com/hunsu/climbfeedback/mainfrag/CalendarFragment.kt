@@ -163,5 +163,13 @@ class CalendarFragment : Fragment() {
         }
     }
 
+    fun changeNewFrag(newfrag:Fragment){
+        val fragmentTransaction = activity?.supportFragmentManager?.beginTransaction()!!
+        fragmentTransaction.replace(R.id.main_frm, newfrag)
+        fragmentTransaction.addToBackStack(null) // 백스택에 추가
+        fragmentTransaction.commit()
+
+    }
+
 
 }

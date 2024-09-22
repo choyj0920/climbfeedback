@@ -7,6 +7,7 @@ data class ClimbingLog(
     val location: String,
     val feedback: String,
     val logContent: String,
-    val climbingImage: ByteArray?,
+    val climbingImageSize:Int?,
+    val shortImageSize:Int?,
     val score: Int
 )

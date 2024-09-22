@@ -13,6 +13,7 @@ import com.hunsu.climbfeedback.databinding.ItemCalendarDaysBinding
 import com.hunsu.climbfeedback.db.data.ClimbingLog
 import com.hunsu.climbfeedback.db.data.TestAddClimbingLogActivity
 import com.hunsu.climbfeedback.mainfrag.CalendarFragment
+import com.hunsu.climbfeedback.mainfrag.WeekFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -59,6 +60,12 @@ class AdapterDay(
                 val intent = Intent(parent.requireContext(), TestAddClimbingLogActivity::class.java)
                 intent.putExtra("selectedDate", curDay)
                 parent.startActivity(intent)
+            }
+            holder.binding.ivDate.setOnClickListener{
+                parent.changeNewFrag(
+                    WeekFragment(dayList[position])
+                )
+
             }
 
             var logList= logMap?.get(curDay)
