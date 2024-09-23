@@ -33,7 +33,7 @@ class ClimbingLogViewModel : ViewModel() {
                 val feedback = cursor.getString(cursor.getColumnIndexOrThrow("feedback"))
                 val logContent = cursor.getString(cursor.getColumnIndexOrThrow("logContent"))
                 val climbingImageindex = cursor.getInt(cursor.getColumnIndexOrThrow("climbingImage"))
-                val shortImageindex = cursor.getInt(cursor.getColumnIndexOrThrow("climbingImage"))
+                val shortImageindex = cursor.getInt(cursor.getColumnIndexOrThrow("shortImage"))
                 val score = cursor.getInt(cursor.getColumnIndexOrThrow("score"))
 
                 val log = ClimbingLog(id, date, time, location, feedback, logContent,climbingImageindex,shortImageindex,score)
