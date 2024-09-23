@@ -35,6 +35,7 @@ import org.tensorflow.lite.examples.poseestimation.ml.MoveNet
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import java.util.Random
 import kotlin.math.roundToInt
 
 
@@ -372,7 +373,7 @@ class VideoActivity : AppCompatActivity() {
             dbHelper = ClimbingLogDatabaseHelper(this),
             date = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(Calendar.getInstance().time),
             time = "14:00",
-            location = "place",
+            location = "place${Random().nextInt()}",
             feedback = "feedback",
             logContent = "------",
             score = 55,
