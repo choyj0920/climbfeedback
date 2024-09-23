@@ -2,4 +2,285 @@
     <string name="app_name">climbfeedback</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="climbing_tutorial">
+        <![CDATA[
+        <p>1회차</p>
+        <p>- 클라이밍 기본 자세</p>
+        <p>1. 홀드를 양손으로 잡고 양발을 좌우로 놔서 <font color="red">삼각형</font>을  만든다.</p>
+        <p>2. <font color="red">고관절</font> (무릅을 바같으로)을 열고 엉덩이(몸의 중심을)를 벽으로댄다.</p>
+        <p>3. 홀드를 잡을 때는 발끝부터  허리까지 단전에 힘을 들어올려 일어서면서  팔을 <font color="red">필요한 만큼만 살짝 당겨 반동</font>으로 잡는다.</p>
+        <p>4. 허리를 벽에서 살짝 띄워 발을 움직이기 쉽게 이동시키고, <font color="red">잡은 손과 반대 발을</font> 잡은 손 방향으로 을 이동시키고 나머지 발은 필요에 의해 이동시킨다.</p>
+        <p>5. 마지막으로 벽으로 허리를 다시 붙이는데 이때의 <font color="red"> 관성을 이용하며  일어나며 다음 홀드를 잡으면 편하다.</font></p>
+
+        <br>
+        <br>
+
+
+        <p>- TIP</p>
+        <p>- 홀드를 잡을 때는<font color="red"> 엄지를</font> 활용하여 잡는다.</p>
+        <p>(책을 들거나 야구공,컴 등을 들떄를 생각해보자)</p>
+        <p>- 멀리 있는 홀드를 잡으면 그 만큼 밟고 많이 와주고 보내주는 것을 인지한다.</p>
+        <p>- 내려올 때는(다운클라이밍시) 다리를 살짝 움직일수 있을 <font color="red">최대한 내리고</font> 다음 홀드를 잡고 빠르게 내려가 앉는다.</p>
+        <p>- 다리를 옮길 때는 두 팔을 펴서 이동해야 정확히 옮길수 있다.</p>
+        <p>- 파인당시  홀드의 넓이나 모양  방향을 잘 보고 한다.</p>
+        <p>- 발은 최소한으로 하되 너무 적게  사용하여 다음동작이 무리가 갈정도로 줄이면 안됀다. </p>
+        <p>- 아웃 사이드 다음동작이  아웃사이드 일시 사용하고 아니면 인사이드로 한다.</p>
+        <p>- 클라이밍은 자신이 편한 방법이 가장 쉬운 방법이다.</p>
+
+        <br>
+        <br>
+
+        <p>클라이밍의 종류</p>
+        <p><font color="red">볼더링</font> - 4~5미터 벽을 안전 장비 없이 올라가는 것. 많은 힘과 기술이 필요하다.</p>
+        <p><font color="red">리드클라이밍</font> - 10~15미터 벽을 하네스와  자일을 착용하여 올라가는 것.주어진 시간안에 완등하거나 높게 올라가는 것을 겨루는 경기방식(가장클라이밍에 기본 형태)</p>
+        <p><font color="red">스피드클라이밍</font> - 전 세계 공통으로 120미터의 같은 루트를 만들고 시간을 단축시키며 겨루는 경기 방식(비공식 최고기록 4초 대)</p>
+
+        <br>
+        <br>
+
+        <p>기타. (아이스클라이밍, 크랙등반, 프리솔로, 팀워터, 멀티피치등반, 빌더링 등등)</p>
+        ]]>
+    </string>
+
+    <string name="climbing_tutorial_5">
+        <![CDATA[
+        <p><strong>5회차</strong></p>
+        <div style="text-align:center;"><strong>클라이밍용어</strong></div>
+        <div style="text-align:center;"><strong>《홀듲종류와 잡는 법》</strong></div>
+
+        <br>
+        <p>저그홀드: 일반적으로 초보분들이 잡는 홀드 <font color="yellow">손바닥과 손가락 마디 전체를 사용</font> 할 수 있는 큰홀드이다.</p>
+        <br>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<font color="yellow">잡는 법</font>: 네손가락을 받듯이 모은 후에 흠에 넣고 야구 글러브 끼듯 잡는다. 이때 <font color="yellow">엄지는 홀드 사이드에 살짝 봍여서</font> 같이 잡아준다.</p>
+        <br>
+        <br>
+        <p>크림프홀드: 얇게 벽에서 2~3cm 정도만 튀어나와 있는 홀드. <font color="yellow">손가락 한 두마디만 사용</font> 할 수 있어 손가락 단련이 안 됀 초심자들이 침에 가장 잡기 힘든 그립이다.</p>
+        <br>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<font color="yellow">잡는 법:</font> 튀어나온 깊이나 길이에 따라 <font color="yellow">오픈그립, 하프크림프, 풀크림프 세가지 타법의 방식</font>으로 잡을 수 있다.</p>
+        <br>
+        <br>
+        <p>슬러퍼홀드: 둥글하고 맨들맨들한 <font color="yellow">반구 형테의 홀드.</font></p>
+        <br>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<font color="yellow">잡는 법:</font> 크기에 따라 다르지만 손바닥을 홀드전체에 붙여서 손목을 세워서 <font color="yellow">손바닥마찰력은 최대한  발휘하여 잡는다.</font> 손에 잡히는 크기의 경우 손가락을 펴서 전체를 움켜 잡듯이 잡는다.</p>
+        <br>
+        <br>
+        <p>핀치홀드: <font color="yellow">길쭉하게 책모양</font>처럼 튀어 나온 홀드.</font></p>
+        <br>
+
+        <p> &nbsp;&nbsp;&nbsp;&nbsp;<font color="yellow">잡는 법: 책 꽃이에서 책을  껴네듯이 네손가락과 엄지를 서로 맞대서 잡는다.</font>이때 문 문손잡이를 잡고 열 듯이 바깥쪽으로 비틀어 잡으면 더 큰 마찰력을 얻을 수 있다.  흘드가 자은 경우 꼬집듯이 잡는다.</p>
+        <br>
+        <br>
+
+        <p>포켓홀드: 손가락이 한 두 개만 들어갈 수 있게 <font color="yellow">구멍이 난 모양의 홀드</font> 초보자부터 상급자까지 큰 부상을 입을 수 있어 많은 연습이 필요한 홀드.</p>
+        <br>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<font color="yellow">잡는 법: 손가락을 넣고</font> 엄지를  손바닥 밑으로 넣어서 주먹을 쥐듯 움켜잡는다. 이때 클립스처럼 오픈, 하프, 풀 세 종류로 잡을수 있다.</p>
+        <br>
+        <br>
+
+        <p>블록홀드: <font color="yellow">커다랗고 멘들 맨들한 흘드</font>  주로 다른 흘드를 붇여 각도를 주거나 그 제체로 사용한다.</p>
+        <br>
+        <br>
+
+
+        <p><이 외에 잡는 법></p>
+        <br>
+        <br>
+        <p>게스통:<font color="yellow">어깨를 이용</font> 하여 반대 방향으로 끓어 당기는 기술 (가슴을 피고 벽에 붙여야 좋다.)</p>
+        <br>
+        <br>
+        <p>랩:<font color="yellow">손목과 손바닥을 꺽어 감싸 듯이 잡는 기술</font></p>
+        <br>
+        <br>
+        <p>언더그립:위가 아닌 <font color="yellow">아래로 잡는 흘드</font> 다리를 높게 올려 서잇듯이 잡는게 편하다.</p>
+        <br>
+        <br>
+        <p><재밍:<font color="yellow">갈라진 크랙사이로 손을 넣고 손전체로 잡는법</font> 자연물에서 주로 나오고 인공물에는 거의 없다></p>
+        <br>
+        <br>
+        <p><  (크랙등반시 사용)></p>
+        <br>
+        <br>
+
+        <p><font color="red"><주의사항></font></p>
+        <br>
+        <br>
+        <p>-흘드의 종류가 정해서 있어도 등반자의 손크기 피지컬 환경에 따라 잡는법 힘을 주는 법이 다르기 때문에 많은 경험을 쌓는개 중요하다.에를 들어 저그라도 오버 행에선 한마디 클림프로 바껄수도 있다. 편치라도 손이 작은 사람은 한손에 안들어와 핀치로 잡지 못하는 상황도 더러 있다.</p>
+        <br>
+        <br>
+        <p><strong>손기술과 발기술</strong></p>
+        <br>
+        <br>
+        <p>엣지(에징): 암벽화 앞부분 테두리로 홀드를 밟는 기술화 안쪽.</p>
+        <br>
+        <br>
+        <p><font color="red">인사이드 스텝(엣지):</font> 무릎을 바깥쪽으로 향하게 하고 홀드를  안쪽부분으로 딛는 기본기술.</p>
+        <br>
+        <br>
+        <p><font color="red">아웃사이드 스텝(엣지):</font> 홀드를 잡은 상태에서 반대쪽이라면 벽에 붙이고 암벽화 바깥쪽으로 홀드를 딛고 이동하는 기술(먼 거리를 갈 때 회전력을 줘서 가면 더 먼 거리를 갈수 있다.)</p>
+        <br>
+        <br>
+        <p><font color="red">카운터 밸런스(플래깅):</font> 오른손을 오른발 상대에서 왼발응 오른족 다리 뒤나 앞으로 넘겨서 귤형을 잡는 방법(앞으로 넘기면 인사이드플래깅 뒤로 가면 아웃사이드 프래깅이라 한다.)</p>
+        <br>
+        <br>
+        <p><font color="red">하이스텝:</font> 높은  위치에 있는  홀드를 딛고 무릅을  넘겨서 이동하는 기술(뒷 발도 따라와야 편하다.)</p>
+        <br>
+        <br>
+        <p>맨틀링: 큰 바위에 정상이나  턱을 머슬업 하듯이 아래로 눌러서 일어나는 기술 </p>
+        <br>
+        <br>
+        <p>피겨포: 한손에 다리를 고정시키고 이동하는 기술</p>
+        <br>
+        <br>
+        <p><font color="red">스미어링:</font> 발을 롤드에 비벼서 마찰력을 높이는 기술</p>
+        <br>
+        <br>
+        <p><font color="red">토훌:</font>  발등으로 홀드를 잡아 당기는 기술.</p>
+        <br>
+        <br>
+        <p><font color="red">힐훅:</font>  발 뒷 꿈치로 홀드를 잡아 당기는 기술.</p>
+        <br>
+        <br>
+        <p>레이백: 손으로 당기고 발로 밀어주며 밸런스를 잡는 기술.</p>
+        <br>
+        <br>
+        <p>스태밍: 발이나 손을 양쪽으로 밀어서  밸런스를 잡는 기술.</p>
+        <br>
+        <br>
+        <p>데드포인트: 몸에 체공을 만들어 다음 홀드를 잡는 기술.</p>
+        <br>
+        <br>
+        <p><font color="red">다이노:</font> 양손 양발 떼고 뛰어 다음 홀드를 잡는 기술.</p>
+        <br>
+        <br>
+        <p>더블다이노: 다음 홀드를 양손으로 잡는 다이노.</p>
+        <br>
+        <br>
+        <p>런지: 다이노와 비슷하지만 손이나 발이 하나라도 점 홀드에 붙어 있다.</p>
+        <br>
+        <br>
+        <p><font color="red">더블테이크:</font>다음훌드를 가기 위해 훌드를 한번 더 거쳐 가는 기술</p>
+        <br>
+        <br>
+
+        <p><strong>프릭션:</strong> 홀드의 마찰력을 말한다.</p>
+        <br>
+        <br>
+        <p><strong><font color="red">크럭스:</font></strong> 문제(루트)에서 가장 어려운 구간을 지칭.</p>
+        <br>
+        <br>
+        <p><strong>루트:</strong> 우리가 흔히들 문제적 부르는 등반하는 길.</p>
+        <br>
+        <br>
+        <p><strong>그래이드:</strong> 볼더링이나, 리드클라이밍 난이도.</p>
+        <br>
+        <br>
+
+        <p><strong>hueco graded(V스케일):</strong> 우리가 나라에서 사용하는 볼더링 난이도 V0부터 시작.
+        보통 1-2번 열심히 하면 V4-5까지 도달할 수 있고, 주력 대회자 V14-15정도 한다.</p>
+        <br>
+        <br>
+
+        <p><strong>요세미티등급:</strong> 리드클라이밍 난이도이며 5.9부터이며 거기서 A.B.C.D 순으로 세분화 된다.
+        (5.9ABCD -> 5.10ABCD -> 각가대회 선수자 최근 여성최초로 5.15A를 완등하고 유명한 오드라 선수가
+        세계에서 가장어려운 루트를 하나인 5.15D시험완로 완동했다.)</p>
+        <br>
+        <br>
+
+        <p><strong>볼더링:</strong> 쉽고 짧게 벼락.</p>
+        <br>
+        <br>
+        <p><strong>리드 클라이밍:</strong> 하네스를 착용하여 자일을 걸고 미리 설치된 볼트에 퀄과 자일을 순서 대로 걸며 올라가는 방식의 클라이밍.</p>
+        <br>
+        <br>
+
+        <p><strong>볼더링:</strong> 일반 장비 없이 맨 몸으로 바위나 낮은 절벽을 오르는 방식.</p>
+        <br>
+        <br>
+        <p><strong>펌핑:</strong> 근육을 지속적으로 사용하여 산소공급이 원활하지 못 하여 근육이 부풀어 오르고 미비되는 현상.</p>
+        <br>
+        <br>
+        <p><strong>탑:</strong> 루트의 끝 목적지.</p>
+        <br>
+        <br>
+
+        <p><strong><font color="red">동반자:</font></strong> 동반을 하는 시작자.</p>
+        <br>
+        <br>
+        <p><strong>확보자(빌레이어):</strong> 동반자를 추락으로부터 보호하기 위해 확보기와 하네스로 자일을 조정하는 사람.</p>
+        <br>
+        <br>
+
+        <p><strong>탭:</strong> 전문용어는  아니지만 동반자 사용할 수 있는 홀드 이외의 홀드를 사용하거나 도움을 받는 경우.</p>
+        <br>
+        <br>
+        <p><strong><font color="red">파일링:</font></strong> 내가 오른 루트를 미리 탐색 하는 모든 과정.</p>
+        <br>
+        <br>
+
+        <p><strong><font color="red">온사이트:</font></strong> 사전에 루트에 대한 어떠한 정보도 없이 한 번의 시도로 완등하는 것.</p>
+        <br>
+        <br>
+        <p><strong>플래시:</strong> 사전에 루트의 정보나 다른사람의 등반을 보고 한 번의 시도로 완등하는 것.</p>
+        <br>
+        <br>
+
+        <p><strong>레드포인트:</strong> 루트를 여러번 시도하여 경험을 쌓고 완등 하는 것.</p>
+        <br>
+        <br>
+        <p><strong><font color="red">캠퍼싱:</font></strong> 발을 안 쓰고 턱걸이 하듯이 팔만 만으로 팔만으로 끌어올려 다음 홀드를 잡는 방법(등을 돌리고 사용).</p>
+        <br>
+        <br>
+
+        <p><strong>사이퍼:</strong> 럱지와 비슷하지만 다리를 힘껏 차는 힘으로 다음 홀드를 잡는 기술.</p>
+        ]]>
+    </string>
+
+    <string name="climbing_tutorial_7">
+    <![CDATA[
+    <p style="text-align:center;"><strong>7회차</strong></p>
+    <p><strong><font color="red">드롭니</strong>: 인사이드</font> 자세에서 다리 <font color="red">한 쪽을 비틀어</font> 강한 <font color="red">지지력을 얻는 기술.</font> 힘의 방향이 한 방향이 아니라 <font color="red">내 몸 쪽으로 향하게 되어 위로 손을 뻗기 쉬워진다.</font></p>
+    <br>
+    <p><strong><font color="red">장점</font></strong>: 제압하기 어려운 홀드도 다리로 몸을 고정시켜 제압하기 수월해 진다.</p>
+    <br>
+    <br>
+    <div style="text-align:center;"><strong><font color="red">《tip》</font></strong></div>
+    <div style="text-align:center;"><strong><font color="red">- 시점시 약간의 회전을 이용한다.</font></strong></div
+    <br>
+    <p><strong><font color="red">플레깅</strong> (구어: <strong>카운터밸런스</strong>): 같은 손, 같은 발일 때 발을 바꾸지 않고</font> 홀드를 밟지 않는 발을 반대 방향으로 넘겨서 <font color="red">균형을 맞추는 기술.</font></p>
+    <br>
+    <br>
+    <p><strong><font color="red">장점</font></strong>: 발을 바꾸기 어려운 상황에서 <font color="red">발을 바꾸지 않고 손을 올길수 있다.</font></p>
+    <p>- 오버행에서 <font color="red">휴식</font>을 취할 수 있다.</p>
+    <p>- 아웃사이드 플레깅, 인사이드 플레깅 <strong><font color="red">두 가지 타입</font></strong>이 있다.</p>
+    <br>
+    <br>
+   <div style="text-align:center;"><strong><font color="red">《tip》</font></strong></div>
+   <div style="text-align:center;"><strong>- 발을 펴고 팔과 나의 허리, 발을 일직선 상에 둔다.</strong></div>
+
+    ]]>
+</string>
+    <string name="climbing_tutorial_9">
+    <![CDATA[
+    <p style="text-align:center;"><strong>안전 에티켓</strong></p>
+    <p>1.부상 방지를 위해 충분한 스트레칭 및 월업 운동을 해주세요.</p>
+    <p>2.손기락과 손목에 장신구를 착용하고 등반하지 마세요.</p>
+    <p>3.메트 위에 물품을 올려놓지 마세요.</p>
+    <p>4.메트 위에 앉거나 서 있지 마세요.</p>
+    <p>5.등반 시에는 암벽화를 착용하세요.</p>
+    <p>6.등반 ㅈ중인 사람과 루트가 겹치지 않는지 확인 후 등반하세요.</p>
+    <p>7.환등 후 뛰에내리지 말고 안전한 높이까지 홀드를 잡고 내려오세요.</p>
+    <p>8.한 발 또는 엉덩이로 떨어지거나 손목을 짚으며 착지하지 마세요.</p>
+    <p>9.착지 시에는 떨어질 곳을 확인후 ,두 발로 메트를 딛고 손을 가슴 앞쪽으로 모아 무릎을 굽히면서 뒤로 구르세요.</p>
+    <p>10.번인 과실로 인한 사고 및 물품 파손은 모두 본인의 책임입니다.</p>
+    <p>11. 자유 이용 시간에 어린이 안전은 보호자 첵임입니다.</p>
+
+
+    ]]>
+</string>
+
 </resources>
+
+

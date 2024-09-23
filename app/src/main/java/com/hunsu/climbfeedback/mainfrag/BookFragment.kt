@@ -34,13 +34,14 @@ class BookFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+
         // 데이터 생성
         val itemList = listOf(
-            Item(R.drawable.img, "Text 1"),
-            Item(R.drawable.img, "Text 2"),
-            Item(R.drawable.img, "Text 3"),
-            Item(R.drawable.img, "Text 4"),
-            Item(R.drawable.img, "Text 5"),
+            Item(R.drawable.img, "1 회차"),
+            Item(R.drawable.img, "5 회차"),
+            Item(R.drawable.img, "7 회차"),
+            Item(R.drawable.img, "안전 에티켓"),
+            //Item(R.drawable.img, "Text 5"),
         )
 
         // Adapter 설정

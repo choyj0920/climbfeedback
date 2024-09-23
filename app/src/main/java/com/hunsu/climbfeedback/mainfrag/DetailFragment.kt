@@ -1,5 +1,6 @@
 package com.hunsu.climbfeedback.mainfrag
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import com.hunsu.climbfeedback.R
 
@@ -19,6 +21,7 @@ class DetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -31,6 +34,22 @@ class DetailFragment : Fragment() {
 
         // 데이터 설정
         imageView.setImageDrawable(requireContext().getDrawable(imageResId))
-        textView.text = text
+        //textView.text = text
+        if (text == "1 회차") {
+            val text1 = getString(R.string.climbing_tutorial)
+            textView.text = HtmlCompat.fromHtml(text1, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        }
+        else if (text == "5 회차") {
+            val text1 = getString(R.string.climbing_tutorial_5)
+            textView.text = HtmlCompat.fromHtml(text1, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        }
+        else if (text == "7 회차") {
+            val text1 = getString(R.string.climbing_tutorial_7)
+            textView.text = HtmlCompat.fromHtml(text1, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        }
+        else if (text == "안전 에티켓") {
+            val text1 = getString(R.string.climbing_tutorial_9)
+            textView.text = HtmlCompat.fromHtml(text1, HtmlCompat.FROM_HTML_MODE_COMPACT)
+        }
     }
 }
