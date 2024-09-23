@@ -19,6 +19,7 @@
         android:paddingBottom="10dp"
         android:id="@+id/tv_date"
 
+        android:textFontWeight="800"
 
         android:text="7.22 화"
 
@@ -315,6 +316,7 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_logs"
             android:layout_width="match_parent"
             android:layout_height="160dp"/>
 
@@ -329,6 +331,7 @@
         android:elevation="20dp"
         >
         <TextView
+            android:id="@+id/tv_place_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="- memo1"
@@ -336,12 +339,14 @@
             />
 
         <TextView
+            android:id="@+id/tv_feedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="- memo2"
             android:textColor="@color/black"
             />
         <TextView
+            android:id="@+id/tv_logcontent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="- memo3"

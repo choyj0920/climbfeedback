@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import com.hunsu.climbfeedback.MainActivity
 import com.hunsu.climbfeedback.databinding.ActivityTestAddClimbingLogBinding
 import com.hunsu.climbfeedback.db.ClimbingLogDatabaseHelper
@@ -46,17 +44,16 @@ class TestAddClimbingLogActivity : AppCompatActivity() {
 
         // 빈 값을 체크하고, 저장 로직을 수행
         if (date.isNotEmpty() && logContent.isNotEmpty()) {
-            val climbingImage: ByteArray = ByteArray(0) // 예시로 빈 이미지 사용
 
             viewModel.addClimbingLog(
+                view.context,
                 dbHelper,
                 date = date,
                 time = time,
                 location = location,
                 feedback = feedback,
                 logContent = logContent,
-                climbingImage = climbingImage,
-                score = score
+                score = score,
             )
 
 

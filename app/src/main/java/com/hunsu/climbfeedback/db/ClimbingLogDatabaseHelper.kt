@@ -69,8 +69,11 @@ class ClimbingLogDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DA
             put("location", location)
             put("feedback", feedback)
             put("logContent", logContent)
-            put("climbingImage", climbingImageList?.size)
-            put("shortImage", shortImageList?.size)
+            if(climbingImageList !=null && shortImageList !=null){
+                put("climbingImage", climbingImageList?.size)
+                put("shortImage", shortImageList?.size)
+            }
+
             put("score", score)
         }
         var result = db.insert("ClimbingLog", null, contentValues)
@@ -136,10 +139,12 @@ class ClimbingLogDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DA
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-            if(callBack!=null)
-            withContext(Dispatchers.Main){
-                callBack()
+            if(callBack!=null){
+                withContext(Dispatchers.Main){
+                    callBack()
+                }
             }
+
         }
 
     }

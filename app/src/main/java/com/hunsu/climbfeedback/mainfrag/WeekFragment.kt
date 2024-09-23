@@ -22,6 +22,7 @@ import com.hunsu.climbfeedback.databinding.FragmentWeekBinding
 import com.hunsu.climbfeedback.db.ClimbingLogDatabaseHelper
 import com.hunsu.climbfeedback.db.data.ClimbingLog
 import com.hunsu.climbfeedback.db.data.ClimbingLogViewModel
+import com.hunsu.climbfeedback.mainfrag.adapter.AdapterClimbLog
 import com.hunsu.climbfeedback.mainfrag.adapter.AdapterDay
 import com.hunsu.climbfeedback.mainfrag.adapter.AdapterMonth
 import com.hunsu.climbfeedback.mainfrag.adapter.AdapterWeekDay
@@ -66,7 +67,7 @@ class WeekFragment(var selectedDate:Date) : Fragment() {
         val strDate = SimpleDateFormat("MM.dd E", Locale.KOREAN).format(selectedDate)
         binding!!.tvDate.text=strDate;
 
-        var transFormat = SimpleDateFormat("yyyy-MM-dd")
+        var transFormat = SimpleDateFormat("yyyy-MM-dd",Locale.KOREA)
 
         selectedDayDateFormat = transFormat.format(selectedDate);
 
@@ -95,6 +96,18 @@ class WeekFragment(var selectedDate:Date) : Fragment() {
             layoutManager=dayListManager
             adapter=_dayListAdapter
         }
+
+        val logListManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        var thisDayLogs=viewModel.climbingLogs.get(selectedDayDateFormat)
+        if(thisDayLogs !=null){
+            val _logListAdapter = AdapterClimbLog(this, thisDayLogs)
+            binding!!.rvLogs.apply {
+                layoutManager=logListManager
+                adapter=_logListAdapter
+            }
+        }
+
+
     }
 
 
@@ -116,6 +129,11 @@ class WeekFragment(var selectedDate:Date) : Fragment() {
         return weekDates
     }
 
+    fun setCurLog(log: ClimbingLog){
+        binding!!.tvPlaceTime.text="[${log.location}]  ${log.time}"
+        binding!!.tvFeedback.text="${log.feedback}"
+        binding!!.tvLogcontent.text="${log.logContent}"
+    }
 
 
 

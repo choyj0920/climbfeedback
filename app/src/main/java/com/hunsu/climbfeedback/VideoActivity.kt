@@ -11,10 +11,10 @@ import android.media.MediaMetadataRetriever
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.util.Log.e
-import android.view.SurfaceView
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -22,18 +22,19 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.slider.Slider
-import com.hunsu.climbfeedback.mainfrag.VideoFragment
+import com.hunsu.climbfeedback.db.ClimbingLogDatabaseHelper
 import com.hunsu.climbfeedback.util.VisualizationUtils
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.examples.poseestimation.data.Device
 import org.tensorflow.lite.examples.poseestimation.data.Feedback
 import org.tensorflow.lite.examples.poseestimation.data.Person
 import org.tensorflow.lite.examples.poseestimation.ml.ModelType
 import org.tensorflow.lite.examples.poseestimation.ml.MoveNet
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 import kotlin.math.roundToInt
 
 
@@ -58,10 +59,13 @@ class VideoActivity : AppCompatActivity() {
     private lateinit var btnNext : Button
     private lateinit var btnBack : Button
 
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
 
+        progressBar=findViewById(R.id.progressBar)
         framesRecyclerView = findViewById(R.id.framesRecyclerView)
         selectedFrameImageView = findViewById(R.id.selectedFrameImageView)
         scoreTv = findViewById(R.id.tvScore)
@@ -74,7 +78,7 @@ class VideoActivity : AppCompatActivity() {
 
         btnNext = findViewById(R.id.btnNext)
         btnNext.setOnClickListener {
-            showSaveConfirmationDialog()
+            showSaveConfirmationDialog(this)
         }
 
         btnBack = findViewById(R.id.btnBack)
@@ -132,7 +136,7 @@ class VideoActivity : AppCompatActivity() {
             }
             else if(index == frameImageList.size){
                 // 다 넘기면 저장할건지 물어봐야지
-                showSaveConfirmationDialog()
+//                showSaveConfirmationDialog()
             }
             else{
                 Log.e("VideoActivity", "Invalid index: $index for frameImageList of size ${frameImageList.size}")
@@ -339,13 +343,13 @@ class VideoActivity : AppCompatActivity() {
         }
     }
 
-    private fun showSaveConfirmationDialog() {
+    private fun showSaveConfirmationDialog(context: Context) {
         AlertDialog.Builder(this)
             .setTitle("저장 확인")
             .setMessage("피드백 데이터를 저장하시겠습니까?")
             .setPositiveButton("예") { dialog, _ ->
                 // 데이터를 저장하는 함수 호출 ~~ 09.16 이후로 해야함
-                saveFeedbackData()
+                saveFeedbackData(context = context)
                 dialog.dismiss()
             }
             .setNegativeButton("아니오") { dialog, _ ->
@@ -356,10 +360,30 @@ class VideoActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun saveFeedbackData() {
+    private fun saveFeedbackData(context: Context) {
         // 데이터 저장 로직을 여기에 구현
         // 예) feedback.saveFeedbackData(this)
+
+
+        progressBar.visibility= View.VISIBLE
+
+        MainActivity.mainactivity.viewModel.addClimbingLog(
+            context,
+            dbHelper = ClimbingLogDatabaseHelper(this),
+            date = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(Calendar.getInstance().time),
+            time = "14:00",
+            location = "place",
+            feedback = "feedback",
+            logContent = "------",
+            score = 55,
+            climbingImageList = frameImageList,
+            shortImageList = listOf(frameImageList[0]), ::closeProgressBar
+        )
+
         Toast.makeText(this, "피드백 데이터가 저장되었습니다.", Toast.LENGTH_SHORT).show()
+    }
+    fun closeProgressBar(){
+        progressBar.visibility=View.GONE
     }
 }
 

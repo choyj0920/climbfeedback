@@ -37,6 +37,10 @@ class ClimbingLogViewModel : ViewModel() {
                 val score = cursor.getInt(cursor.getColumnIndexOrThrow("score"))
 
                 val log = ClimbingLog(id, date, time, location, feedback, logContent,climbingImageindex,shortImageindex,score)
+                if(climbingImageindex ==0 || shortImageindex ==0){
+                    log.shortImageSize=null
+                    log.climbingImageSize=null
+                }
                 if(logs.containsKey(date)){
                     logs[date]!!.add(log)
                 }else{

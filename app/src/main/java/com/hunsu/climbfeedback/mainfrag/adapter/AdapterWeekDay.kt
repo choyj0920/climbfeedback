@@ -18,6 +18,7 @@ import com.hunsu.climbfeedback.mainfrag.WeekFragment
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+import java.util.Locale
 import kotlin.math.roundToInt
 
 
@@ -43,7 +44,7 @@ class AdapterWeekDay(
     override fun onBindViewHolder(holder: DayView, position: Int) {
 
 
-        var transFormat = SimpleDateFormat("yyyy-MM-dd")
+        var transFormat = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
         var today = transFormat.format(Calendar.getInstance().time);
 
         var curDay = transFormat.format(dayList[position]);
