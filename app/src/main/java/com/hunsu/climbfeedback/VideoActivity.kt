@@ -145,7 +145,6 @@ class VideoActivity : AppCompatActivity() {
             }
         }
 
-        // 얘가 굳이 있어야할까요 . . . ?
         val framesAdapter = FramesAdapter(frameImageList) { selectedBitmap, index ->
             val outputBitmap = framePersonList[index]?.let {
                 if (feedbackMessages[index] == "자세 오류 없음")
@@ -362,9 +361,6 @@ class VideoActivity : AppCompatActivity() {
     }
 
     private fun saveFeedbackData(context: Context) {
-        // 데이터 저장 로직을 여기에 구현
-        // 예) feedback.saveFeedbackData(this)
-
 
         progressBar.visibility= View.VISIBLE
 
