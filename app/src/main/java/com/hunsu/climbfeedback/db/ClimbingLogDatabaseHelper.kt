@@ -107,7 +107,7 @@ class ClimbingLogDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DA
                     val file = File(imagesDir, fileName)
                     try {
                         FileOutputStream(file).use { fos ->
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos)
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
                         }
                     } catch (e: IOException) {
                         e.printStackTrace()

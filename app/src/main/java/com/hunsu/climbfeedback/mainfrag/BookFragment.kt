@@ -1,5 +1,4 @@
 package com.hunsu.climbfeedback.mainfrag
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,36 +10,27 @@ import com.hunsu.climbfeedback.R
 import com.hunsu.climbfeedback.databinding.FragmentBookBinding
 import com.hunsu.climbfeedback.mainfrag.adapter.Item
 import com.hunsu.climbfeedback.mainfrag.adapter.RvAdapter
-
-
 class BookFragment : Fragment() {
-
     private var binding: FragmentBookBinding? =null
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding=FragmentBookBinding.inflate(inflater,container,false)
-
         return binding!!.root
-
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
+
         // 데이터 생성
         val itemList = listOf(
-            Item(R.drawable.img, "Text 1"),
-            Item(R.drawable.img, "Text 2"),
-            Item(R.drawable.img, "Text 3"),
-            Item(R.drawable.img, "Text 4"),
-            Item(R.drawable.img, "Text 5"),
+            Item(R.drawable.img, "클라이밍 입문 지식"),
+            Item(R.drawable.img, "기본 용어 및 기술"),
+            Item(R.drawable.img, "안전 에티켓"),
+            //Item(R.drawable.img, "Text 5"),
         )
 
         // Adapter 설정
@@ -52,7 +42,6 @@ class BookFragment : Fragment() {
                     putString("TEXT", item.text)
                 }
             }
-
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, detailFragment)
                 .addToBackStack(null)
