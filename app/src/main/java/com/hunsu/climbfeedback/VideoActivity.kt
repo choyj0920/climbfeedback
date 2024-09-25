@@ -386,6 +386,7 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
         // 프래그먼트에서 액티비티로 돌아가기
         supportFragmentManager.popBackStack()
         saveFeedbackData(this)
+        finish()
     }
 
 
@@ -400,7 +401,7 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
             time = cTime,
             location = cLocation,
             feedback = "feedback",
-            logContent = "------",
+            logContent = cMemo,
             score = 55,
             climbingImageList = frameImageList,
             shortImageList = listOf(frameImageList[0]), ::closeProgressBar

@@ -78,7 +78,7 @@ class DiaryFragment() : Fragment() {
             val minute = calendar.get(Calendar.MINUTE)
             val timePickerDialog = TimePickerDialog(requireContext(),android.R.style.Theme_Holo_Light_Dialog_NoActionBar, { _, selectedHour, selectedMinute ->
                 val formattedTime = String.format("%02d시 %02d분", selectedHour, selectedMinute)
-                inputDate.text = formattedTime
+                inputTime.text = formattedTime
             }, hour, minute, true)
 
             timePickerDialog.show()
