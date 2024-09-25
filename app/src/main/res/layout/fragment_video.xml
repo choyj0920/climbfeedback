@@ -41,7 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
-            android:text="사용자의 클라이밍 동영상을 분석하여 틀린 자세가 있는지 검출한 뒤 사용자에게 자세 교정에 대한 피드백을 제공합니다."
+            android:text="메이트의 클라이밍 동영상을 분석하여 틀린 자세가 있는지 검출한 뒤 사용자에게 자세 교정에 대한 피드백을 제공합니다."
             android:textColor="@color/gray_2"/>
 
         <androidx.appcompat.widget.AppCompatButton
