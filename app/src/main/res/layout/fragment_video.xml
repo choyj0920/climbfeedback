@@ -42,6 +42,14 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             android:text="메이트의 클라이밍 동영상을 분석하여 틀린 자세가 있는지 검출한 뒤 사용자에게 자세 교정에 대한 피드백을 제공합니다."
+            android:textColor="@color/gray_4"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="클라이밍 피드백 데이터를 기반으로, 그 날의 클라이밍 일지를 작성할 수 있습니다."
             android:textColor="@color/gray_2"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -56,6 +64,9 @@
             android:background="@drawable/rounded_graybutton"
             android:textColor="@color/neon_mint"
             android:layout_gravity="center"/>
+
+
+
     </LinearLayout>
 
 </FrameLayout>

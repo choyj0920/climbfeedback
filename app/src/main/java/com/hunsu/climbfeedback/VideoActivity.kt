@@ -19,11 +19,13 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.slider.Slider
 import com.hunsu.climbfeedback.db.ClimbingLogDatabaseHelper
+import com.hunsu.climbfeedback.mainfrag.DiaryFragment
 import com.hunsu.climbfeedback.util.VisualizationUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -40,10 +42,14 @@ import java.util.Random
 import kotlin.math.roundToInt
 
 
-class VideoActivity : AppCompatActivity() {
+class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
     companion object {
 
     }
+    lateinit var cDate: String
+    lateinit var cTime: String
+    lateinit var cLocation: String
+    lateinit var cMemo: String
 
     lateinit var frameImageList: List<Bitmap>
     lateinit var framePersonList: MutableList<List<Person>?>
@@ -350,7 +356,7 @@ class VideoActivity : AppCompatActivity() {
             .setMessage("피드백 데이터를 저장하시겠습니까?")
             .setPositiveButton("예") { dialog, _ ->
                 // 데이터를 저장하는 함수 호출 ~~ 09.16 이후로 해야함
-                saveFeedbackData(context = context)
+                makeDiary()
                 dialog.dismiss()
             }
             .setNegativeButton("아니오") { dialog, _ ->
@@ -361,6 +367,28 @@ class VideoActivity : AppCompatActivity() {
             .show()
     }
 
+    private fun makeDiary() {
+        val fragment = DiaryFragment()
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frm2, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+
+    override fun onInputReceived(date: String, time: String, location: String, memo: String,) {
+        cDate = date
+        cTime = time
+        cLocation = location
+        cMemo = memo
+
+        // 프래그먼트에서 액티비티로 돌아가기
+        supportFragmentManager.popBackStack()
+        saveFeedbackData(this)
+    }
+
+
     private fun saveFeedbackData(context: Context) {
 
         progressBar.visibility= View.VISIBLE
@@ -368,9 +396,9 @@ class VideoActivity : AppCompatActivity() {
         MainActivity.mainactivity.viewModel.addClimbingLog(
             context,
             dbHelper = ClimbingLogDatabaseHelper(this),
-            date = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA).format(Calendar.getInstance().time),
-            time = "14:00",
-            location = "place${Random().nextInt()}",
+            date = cDate,
+            time = cTime,
+            location = cLocation,
             feedback = "feedback",
             logContent = "------",
             score = 55,
