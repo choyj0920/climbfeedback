@@ -9,14 +9,28 @@
 
 
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/slider"
+        app:layout_constraintTop_toTopOf="@id/tvScore">
+
+
+
+    </FrameLayout>
 
     <com.google.android.material.slider.Slider
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
         android:id="@+id/slider"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:contentDescription="Adjust video playback speed"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
+        app:trackColor="@color/gray_6"
+        app:thumbColor="@color/neon_mint"
+        app:thumbRadius="10dp"
+        app:trackHeight="6dp"
+        app:tickColor="@color/gray_6"
         app:layout_constraintBottom_toTopOf="@+id/framesRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -37,7 +51,6 @@
         android:id="@+id/framesRecyclerView"
         class="androidx.recyclerview.widget.RecyclerView"
         android:layout_width="match_parent"
-
         android:scrollbarFadeDuration="0"
         android:layout_height="70dp"
         android:orientation="horizontal"
@@ -46,24 +59,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이전"
-        android:backgroundTint="@color/gray_6"
-        android:textColor="@color/neon_mint"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/close"
+        android:background="@drawable/rounded_graybutton"
+        android:scaleType="centerCrop"
+        android:padding="0sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- activity_video.xml에 추가 -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="다음"
-        android:backgroundTint="@color/gray_6"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_height="50dp"
         android:textColor="@color/neon_mint"
+        android:fontFamily="@font/notosanskr_extrabold"
+        android:text="저장"
+        android:drawableLeft="@drawable/yellow_pencil"
+        android:paddingLeft="12dp"
+        android:background="@drawable/rounded_graybutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

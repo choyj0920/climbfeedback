@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -58,7 +59,7 @@ class VideoActivity : AppCompatActivity() {
     private lateinit var scoreTv: TextView
 
     private lateinit var btnNext : Button
-    private lateinit var btnBack : Button
+    private lateinit var btnBack : ImageButton
 
     private lateinit var progressBar: ProgressBar
 
