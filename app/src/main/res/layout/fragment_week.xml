@@ -205,7 +205,7 @@
                     android:layout_height="120dp"
                     android:layout_gravity="center"
                     android:progress="92"
-                    app:indicatorColor="@color/mint"
+                    app:indicatorColor="@color/neon_mint"
                     app:indicatorSize="120dp"
 
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -327,7 +327,7 @@
         android:paddingHorizontal="20dp"
         android:paddingVertical="15dp"
         android:orientation="vertical"
-        android:background="@drawable/rounded_box_grey2"
+        android:background="@drawable/rounded_box_gray2"
         android:elevation="20dp"
         >
         <TextView

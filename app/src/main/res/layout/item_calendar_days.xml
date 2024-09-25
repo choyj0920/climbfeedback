@@ -27,7 +27,7 @@
         android:progress="75"
         android:id="@+id/track"
         app:trackColor="@color/black"
-        app:indicatorColor="@color/mint"
+        app:indicatorColor="@color/neon_mint"
         app:trackCornerRadius="7dp"
         app:indicatorSize="30dp"
         app:trackThickness="2dp"

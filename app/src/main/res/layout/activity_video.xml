@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".VideoActivity">
 
@@ -14,7 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:contentDescription="Adjust video playback speed"
-        android:backgroundTint="@color/mintColor"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/framesRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -49,8 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="이전"
-        android:backgroundTint="@color/mintColor"
-        android:textColor="@android:color/white"
+        android:backgroundTint="@color/gray_6"
+        android:textColor="@color/neon_mint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,8 +62,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="다음"
-        android:backgroundTint="@color/mintColor"
-        android:textColor="@android:color/white"
+        android:backgroundTint="@color/gray_6"
+        android:textColor="@color/neon_mint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
