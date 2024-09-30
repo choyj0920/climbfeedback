@@ -317,7 +317,7 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
 
 
     private fun processVideoUri(uri: Uri) {
-        val frames = extractFrames(this, uri, 300)
+        val frames = extractFrames(this, uri, 200)
         frameImageList = frames
 
         /// tf 수행
@@ -355,7 +355,6 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
             .setTitle("저장 확인")
             .setMessage("피드백 데이터를 저장하시겠습니까?")
             .setPositiveButton("예") { dialog, _ ->
-                // 데이터를 저장하는 함수 호출 ~~ 09.16 이후로 해야함
                 makeDiary()
                 dialog.dismiss()
             }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">climbfeedback</string>
+    <string name="app_name">climate</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -146,6 +146,9 @@
         <br>
         <br>
         <p>사이퍼: 런지와 비슷하지만 다리를 힘껏 차는 힘을 이용해 다음 홀드를 잡는 기술. 포고, 문킥 등으로도 불린다.</p>
+        <br>
+        <br>
+        <p><font color="red">코디네이션:</font> 데드포인트를 주어 만들어진 한 번의 체공시간 동안 두 개 이상의 무브를 하는 것. 줄여서 코디라고 부른다. </p>
         <br>
         <br>
         <p>더블테이크: 멀리 있는 홀드를 잡기 위해 중간홀드를 거쳐잡는 기술.</p>

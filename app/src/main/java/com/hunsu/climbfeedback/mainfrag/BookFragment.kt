@@ -27,9 +27,9 @@ class BookFragment : Fragment() {
 
         // 데이터 생성
         val itemList = listOf(
-            Item(R.drawable.img, "클라이밍 입문 지식"),
+            Item(R.drawable.book_image, "클라이밍 입문 지식"),
             Item(R.drawable.img, "기본 용어 및 기술"),
-            Item(R.drawable.img, "안전 에티켓"),
+            Item(R.drawable.warning, "안전 에티켓"),
             //Item(R.drawable.img, "Text 5"),
         )
 
