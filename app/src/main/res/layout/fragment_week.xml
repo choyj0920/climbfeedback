@@ -18,14 +18,11 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:id="@+id/tv_date"
-
         android:textFontWeight="800"
-
+        android:fontFamily="@font/montserrat_extrabold"
         android:text="7.22 화"
-
         android:textColor="@color/white"
         android:textSize="24dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,6 +33,7 @@
         android:layout_height="25dp"
         android:layout_gravity="center"
         android:gravity="center"
+        android:fontFamily="@font/montserrat_regular"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,12 +120,11 @@
     </LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/rv_month"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:nestedScrollingEnabled="false"
-        android:orientation="horizontal"
+        android:fontFamily="@font/montserrat_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/daynamelayout" />
@@ -169,21 +166,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-
-
-                android:paddingBottom="10dp"
-
+                android:fontFamily="@font/notosanskr_bold"
                 android:text="안정성 점수"
                 android:textColor="@color/black"
-
                 android:textSize="12sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/tv_score"
@@ -192,6 +182,7 @@
                     android:text=""
                     android:textSize="16sp"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/notosanskr_extrabold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -204,10 +195,9 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_gravity="center"
-                    android:progress="92"
+                    android:progress="00"
                     app:indicatorColor="@color/neon_mint"
                     app:indicatorSize="120dp"
-
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -234,52 +224,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:paddingTop="10dp"
-
-
-                android:paddingBottom="10dp"
-
+                android:fontFamily="@font/notosanskr_bold"
                 android:text="==========="
                 android:textColor="@color/black"
-
                 android:textSize="16dp"
                 />
 
             <TextView
-                android:layout_margin="7dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:paddingTop="10dp"
+                android:fontFamily="@font/notosanskr_bold"
+                android:paddingTop="0dp"
+                android:paddingStart="20dp"
                 android:minWidth="140dp"
-                android:minHeight="45dp"
-
-                android:paddingBottom="10dp"
-
                 android:text="부족 "
-                android:textColor="@color/black"
+                android:textColor="#FC174E"
                 android:background="@drawable/rounded_box_white2"
                 android:elevation="10dp"
-
-                android:textSize="16dp"
+                android:textSize="15dp"
+                android:layout_marginBottom="9dp"
                 />
             <TextView
-                android:layout_margin="7dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:paddingTop="10dp"
+                android:fontFamily="@font/notosanskr_bold"
+                android:paddingTop="0dp"
+                android:paddingStart="20dp"
                 android:minWidth="140dp"
-                android:minHeight="45dp"
-
-                android:paddingBottom="10dp"
-
                 android:text="주의"
-                android:textColor="@color/black"
+                android:textColor="#FFA800"
                 android:background="@drawable/rounded_box_white2"
                 android:elevation="10dp"
-
-                android:textSize="16dp"
+                android:textSize="15dp"
                 />
 
 
@@ -311,6 +289,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="이번 등반"
+            android:fontFamily="@font/notosanskr_bold"
             android:textSize="14sp"
             android:textColor="@color/black"
             />
@@ -318,43 +297,41 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_logs"
             android:layout_width="match_parent"
-            android:layout_height="160dp"/>
+            android:layout_height="160dp"
+            android:layout_marginBottom="20dp"/>
 
-    <LinearLayout
+        <LinearLayout
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="15dp"
-        android:orientation="vertical"
-        android:background="@drawable/rounded_box_gray2"
-        android:elevation="20dp"
-        >
-        <TextView
-            android:id="@+id/tv_place_time"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="- memo1"
-            android:textColor="@color/black"
-            />
+            android:background="@drawable/rounded_box_gray2"
+            android:elevation="20dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="15dp">
 
-        <TextView
-            android:id="@+id/tv_feedback"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="- memo2"
-            android:textColor="@color/black"
-            />
-        <TextView
-            android:id="@+id/tv_logcontent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="- memo3"
-            android:textColor="@color/black"
-            />
+            <TextView
+                android:id="@+id/tv_place_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- memo1"
+                android:textColor="@color/black" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- memo2"
+                android:textColor="@color/black" />
 
+            <TextView
+                android:id="@+id/tv_logcontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- memo3"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
 
 
     </LinearLayout>

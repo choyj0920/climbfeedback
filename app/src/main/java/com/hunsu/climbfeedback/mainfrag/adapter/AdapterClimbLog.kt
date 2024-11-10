@@ -61,12 +61,6 @@ class AdapterClimbLog(
         holder.binding.frameImageView.setOnClickListener{
             parent.setCurLog(thisLog)
         }
-
-
-
-
-
-
     }
 
     fun loadBitmapFromImagesFolder(context: Context, insertId: Int): Bitmap? {
@@ -97,4 +91,6 @@ class AdapterClimbLog(
     override fun getItemCount(): Int {
         return logList.size
     }
+
+
 }

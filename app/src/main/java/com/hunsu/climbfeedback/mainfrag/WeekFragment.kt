@@ -1,44 +1,33 @@
 package com.hunsu.climbfeedback.mainfrag
 
 import android.annotation.SuppressLint
-import android.graphics.Color
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.RecyclerView
-import com.hunsu.climbfeedback.R
-import com.hunsu.climbfeedback.databinding.FragmentCalendarBinding
 import com.hunsu.climbfeedback.databinding.FragmentWeekBinding
-import com.hunsu.climbfeedback.db.ClimbingLogDatabaseHelper
 import com.hunsu.climbfeedback.db.data.ClimbingLog
 import com.hunsu.climbfeedback.db.data.ClimbingLogViewModel
 import com.hunsu.climbfeedback.mainfrag.adapter.AdapterClimbLog
-import com.hunsu.climbfeedback.mainfrag.adapter.AdapterDay
-import com.hunsu.climbfeedback.mainfrag.adapter.AdapterMonth
-import com.hunsu.climbfeedback.mainfrag.adapter.AdapterWeekDay
-import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.util.Calendar
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 import kotlin.math.roundToInt
 
 
-class WeekFragment(var selectedDate:Date) : Fragment() {
+class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
 
     private var binding: FragmentWeekBinding? =null
 
-
+    private lateinit var selected_Date: LocalDate
     val viewModel: ClimbingLogViewModel by activityViewModels<ClimbingLogViewModel>()
     lateinit var selectedDayDateFormat:String
     lateinit var weekDayList :List<Date>;
@@ -50,18 +39,15 @@ class WeekFragment(var selectedDate:Date) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        weekDayList=getWeekDates(selectedDate);
+        selected_Date = dateToLocalDate(selectedDate)
         binding=FragmentWeekBinding.inflate(inflater,container,false)
 
         initUiText()
 
-
-
-
         return binding!!.root
 
     }
+
 
     fun initUiText(){
         val strDate = SimpleDateFormat("MM.dd E", Locale.KOREAN).format(selectedDate)
@@ -89,12 +75,13 @@ class WeekFragment(var selectedDate:Date) : Fragment() {
     }
 
     fun initRV(){
-        val dayListManager = GridLayoutManager(requireContext(), 7)
 
-        val _dayListAdapter = AdapterWeekDay(this, weekDayList,viewModel.climbingLogs)
+        saveSelectedDate(selected_Date)
+        val _dayListAdapter = CalendarVPAdatper(this, this, dateToLocalDate(selectedDate))
+
         binding!!.rvMonth.apply {
-            layoutManager=dayListManager
-            adapter=_dayListAdapter
+            adapter = _dayListAdapter
+            setCurrentItem(Int.MAX_VALUE / 2, false)
         }
 
         val logListManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
@@ -110,29 +97,65 @@ class WeekFragment(var selectedDate:Date) : Fragment() {
 
     }
 
-
-    fun getWeekDates(selectedDate: Date): List<Date> {
-        val calendar = Calendar.getInstance()
-        calendar.time = selectedDate
-
-        // 주의 첫 번째 날로 이동 (월요일로 설정)
-        calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
-
-        val weekDates = mutableListOf<Date>()
-
-        // 월요일부터 일요일까지의 날짜를 리스트에 추가
-        for (i in 0..6) {
-            weekDates.add(calendar.time)
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
-        }
-
-        return weekDates
-    }
-
     fun setCurLog(log: ClimbingLog){
         binding!!.tvPlaceTime.text="[${log.location}]  ${log.time}"
         binding!!.tvFeedback.text="${log.feedback}"
         binding!!.tvLogcontent.text="${log.logContent}"
+
+    }
+
+    private fun saveSelectedDate(date: LocalDate) {
+        val sharedPreference = requireActivity().getSharedPreferences("CALENDAR-APP", AppCompatActivity.MODE_PRIVATE)
+        val editor : SharedPreferences.Editor = sharedPreference.edit()
+        editor.putString("SELECTED-DATE", date.toString())
+        editor.apply()
+    }
+
+    private fun dateFormat(date: LocalDate): String{
+        val formatter = DateTimeFormatter.ofPattern("MM.dd E", Locale.KOREAN)
+        return date.format(formatter)
+    }
+
+    override fun onClickDate(date: LocalDate) {
+        selected_Date = date
+        saveSelectedDate(date)
+        binding!!.tvDate.text = dateFormat(date)
+
+        selectedDayDateFormat = date.toString()  // selectedDate를 String 형식으로 변환
+        dayLogs = viewModel.climbingLogs.get(selectedDayDateFormat)
+        binding!!.tvClimbCount.text = "등반 횟수 : ${if (dayLogs == null) 0 else dayLogs!!.size}"
+
+        if (dayLogs != null) {
+            val score = dayLogs!!.sumOf { it.score } / dayLogs!!.size.toDouble()
+            binding!!.trackScore.progress = score.roundToInt()
+            binding!!.tvScore.text = "${score.roundToInt()}점"
+        }
+
+        val logListManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        var thisDayLogs=viewModel.climbingLogs.get(selectedDayDateFormat)
+        if(thisDayLogs != null){
+            binding!!.rvLogs.visibility = View.VISIBLE
+            val _logListAdapter = AdapterClimbLog(this, thisDayLogs)
+            binding!!.rvLogs.apply {
+                layoutManager=logListManager
+                adapter=_logListAdapter
+            }
+        }
+        else{
+            binding!!.tvClimbCount.text = "등반 횟수 : 0"
+            binding!!.trackScore.progress = 0
+            binding!!.tvScore.text = " "
+            binding!!.rvLogs.visibility = View.INVISIBLE
+            binding!!.tvPlaceTime.text=" "
+            binding!!.tvFeedback.text=" "
+            binding!!.tvLogcontent.text=" "
+
+        }
+
+    }
+
+    fun dateToLocalDate(date: Date): LocalDate {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
     }
 
 
