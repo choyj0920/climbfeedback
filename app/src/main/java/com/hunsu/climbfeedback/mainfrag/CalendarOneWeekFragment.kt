@@ -114,7 +114,7 @@ class CalendarOneWeekFragment : Fragment() {
         textView.setOnClickListener{
             resetUi() // 모든 날짜 선택 해제
             onClickListener.onClickDate(date) // 인터페이스를 통해 클릭한 날짜 전달
-            setSelectedDate(textView, date != LocalDate.now())
+            setSelectedDate(textView, date < LocalDate.now())
         }
     }
 

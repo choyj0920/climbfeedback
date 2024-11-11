@@ -102,9 +102,6 @@ class CalendarFragment : Fragment() {
 
     fun init_rv(){
 
-
-
-
         val onScrollListener = object: RecyclerView.OnScrollListener() {
             override fun onScrolled(@NonNull recyclerView: RecyclerView, dx:Int, dy:Int) {
                 super.onScrolled(recyclerView, dx, dy)

@@ -309,26 +309,55 @@
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
             android:paddingVertical="15dp">
-
-            <TextView
-                android:id="@+id/tv_place_time"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="- memo1"
-                android:textColor="@color/black" />
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/placeb"
+                    android:layout_marginEnd="10dp"/>
+                <TextView
+                    android:id="@+id/tv_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="- memo1"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/timeb"
+                    android:layout_marginEnd="10dp"/>
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="- memo2"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/tv_feedback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="- memo2"
+                android:text="- memo3"
                 android:textColor="@color/black" />
 
             <TextView
                 android:id="@+id/tv_logcontent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="- memo3"
+                android:text="- memo4"
                 android:textColor="@color/black" />
 
         </LinearLayout>

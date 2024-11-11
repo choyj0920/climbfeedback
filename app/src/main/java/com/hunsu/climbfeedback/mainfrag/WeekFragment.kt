@@ -14,6 +14,7 @@ import com.hunsu.climbfeedback.databinding.FragmentWeekBinding
 import com.hunsu.climbfeedback.db.data.ClimbingLog
 import com.hunsu.climbfeedback.db.data.ClimbingLogViewModel
 import com.hunsu.climbfeedback.mainfrag.adapter.AdapterClimbLog
+import com.hunsu.climbfeedback.mainfrag.adapter.CalendarVPAdatper
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.ZoneId
@@ -98,7 +99,8 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
     }
 
     fun setCurLog(log: ClimbingLog){
-        binding!!.tvPlaceTime.text="[${log.location}]  ${log.time}"
+        binding!!.tvPlace.text="${log.location}"
+        binding!!.tvTime.text="${log.time}"
         binding!!.tvFeedback.text="${log.feedback}"
         binding!!.tvLogcontent.text="${log.logContent}"
 
@@ -146,9 +148,10 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
             binding!!.trackScore.progress = 0
             binding!!.tvScore.text = " "
             binding!!.rvLogs.visibility = View.INVISIBLE
-            binding!!.tvPlaceTime.text=" "
-            binding!!.tvFeedback.text=" "
-            binding!!.tvLogcontent.text=" "
+            binding!!.tvPlace.text="- memo1"
+            binding!!.tvTime.text="- memo2"
+            binding!!.tvFeedback.text="- memo3"
+            binding!!.tvLogcontent.text="- memo4"
 
         }
 

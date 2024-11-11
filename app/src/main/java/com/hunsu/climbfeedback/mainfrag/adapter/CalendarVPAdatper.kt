@@ -1,7 +1,10 @@
-package com.hunsu.climbfeedback.mainfrag
+package com.hunsu.climbfeedback.mainfrag.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.hunsu.climbfeedback.mainfrag.CalendarOneWeekFragment
+import com.hunsu.climbfeedback.mainfrag.IDateClickListener
+import com.hunsu.climbfeedback.mainfrag.WeekFragment
 import java.time.LocalDate
 
 class CalendarVPAdatper(
