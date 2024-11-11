@@ -5,7 +5,7 @@
 
     <ImageView
         android:id="@+id/frameImageView"
-        android:layout_width="100dp"
+        android:layout_width="60dp"
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
 </LinearLayout>
