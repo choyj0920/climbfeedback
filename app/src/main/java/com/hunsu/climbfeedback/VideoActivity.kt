@@ -19,7 +19,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +26,10 @@ import com.google.android.material.slider.Slider
 import com.hunsu.climbfeedback.db.ClimbingLogDatabaseHelper
 import com.hunsu.climbfeedback.mainfrag.DiaryFragment
 import com.hunsu.climbfeedback.util.VisualizationUtils
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.tensorflow.lite.examples.poseestimation.data.Device
@@ -35,10 +37,6 @@ import org.tensorflow.lite.examples.poseestimation.data.Feedback
 import org.tensorflow.lite.examples.poseestimation.data.Person
 import org.tensorflow.lite.examples.poseestimation.ml.ModelType
 import org.tensorflow.lite.examples.poseestimation.ml.MoveNet
-import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
-import java.util.Random
 import kotlin.math.roundToInt
 
 
@@ -50,6 +48,10 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
     lateinit var cTime: String
     lateinit var cLocation: String
     lateinit var cMemo: String
+    var curTotal:Float=0f;
+    var curCountFoot=0;
+    var curCountArms=0;
+    var curCountCenterGravity=0;
 
     lateinit var frameImageList: List<Bitmap>
     lateinit var framePersonList: MutableList<List<Person>?>
@@ -63,11 +65,11 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
     private lateinit var framesRecyclerView: RecyclerView
     private lateinit var selectedFrameImageView: ImageView
     private lateinit var scoreTv: TextView
+    private lateinit var progressBar: ProgressBar
 
     private lateinit var btnNext : Button
     private lateinit var btnBack : ImageButton
 
-    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +79,7 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
         framesRecyclerView = findViewById(R.id.framesRecyclerView)
         selectedFrameImageView = findViewById(R.id.selectedFrameImageView)
         scoreTv = findViewById(R.id.tvScore)
+
 
         initMovenet();
 
@@ -200,74 +203,74 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
     }
 
 
-    private fun runTF() {
-        val loadingDialog = showLoadingDialog()
 
-        lifecycleScope.launch {
-            try {
-                framePersonList = mutableListOf()
-                val feedbackMessages = mutableListOf<String>()  // 각 프레임에 대한 피드백 메시지를 저장
+    private suspend fun runTF() {
 
-                // Feedback 객체를 영상의 전체 프레임 개수로 초기화
-                feedback = Feedback(frameImageList.size)
-                feedback.initFeedback()
+        try {
+            framePersonList = mutableListOf()
+            val feedbackMessages = mutableListOf<String>()  // 각 프레임에 대한 피드백 메시지를 저장
 
-                for ((index, frame) in frameImageList.withIndex()) {
-                    val personList = myMovenet.estimatePoses(frame)
-                    val personListMutable = mutableListOf<Person>()
-                    personListMutable.addAll(personList)
-                    framePersonList.add(personListMutable)
+            // Feedback 객체를 영상의 전체 프레임 개수로 초기화
+            feedback = Feedback(frameImageList.size)
+            feedback.initFeedback()
 
-                    // `checkFrame` 호출하여 자세 점수 평가
-                    val frameFeedback = if (personList.isNotEmpty()) {
-                        feedback.checkFrame(personList[0], index)
-                    } else {
-                        -1 // 사람이 감지되지 않은 경우
+            for ((index, frame) in frameImageList.withIndex()) {
+                val personList = myMovenet.estimatePoses(frame)
+                val personListMutable = mutableListOf<Person>()
+                personListMutable.addAll(personList)
+                framePersonList.add(personListMutable)
+
+                // `checkFrame` 호출하여 자세 점수 평가
+                val frameFeedback = if (personList.isNotEmpty()) {
+                    feedback.checkFrame(personList[0], index)
+                } else {
+                    -1 // 사람이 감지되지 않은 경우
+                }
+
+                // 피드백 메시지 생성
+                val feedbackMessage = getFeedbackMessage(frameFeedback)
+
+                // 피드백 메시지 저장
+                feedbackMessages.add(feedbackMessage)
+
+                // UI 업데이트를 위한 데이터 저장
+                withContext(Dispatchers.Main) {
+                    // Ensure index is within bounds
+                    if (index < framePersonList.size) {
+                        // RecyclerView에서 각 프레임의 이미지를 업데이트
+                        val outputBitmap = framePersonList[index]?.let {
+                            VisualizationUtils.drawBodyKeypoints(frame, it.filter { it.score > MIN_CONFIDENCE }, false, false)
+                        }
+
+                        val scaledBitmap = outputBitmap?.let {
+                            Bitmap.createScaledBitmap(
+                                it,
+                                selectedFrameImageView.width,
+                                (it.height * selectedFrameImageView.width / it.width),
+                                false
+                            )
+                        }
+
+                        selectedFrameImageView.setImageBitmap(scaledBitmap)
                     }
-
-                    // 피드백 메시지 생성
-                    val feedbackMessage = getFeedbackMessage(frameFeedback)
-
-                    // 피드백 메시지 저장
-                    feedbackMessages.add(feedbackMessage)
-
-                    // UI 업데이트를 위한 데이터 저장
-                    withContext(Dispatchers.Main) {
-                        // Ensure index is within bounds
-                        if (index < framePersonList.size) {
-                            // RecyclerView에서 각 프레임의 이미지를 업데이트
-                            val outputBitmap = framePersonList[index]?.let {
-                                VisualizationUtils.drawBodyKeypoints(frame, it.filter { it.score > MIN_CONFIDENCE }, false, false)
-                            }
-
-                            val scaledBitmap = outputBitmap?.let {
-                                Bitmap.createScaledBitmap(
-                                    it,
-                                    selectedFrameImageView.width,
-                                    (it.height * selectedFrameImageView.width / it.width),
-                                    false
-                                )
-                            }
-
-                            selectedFrameImageView.setImageBitmap(scaledBitmap)
-                        }
-                        else {
-                            showError("프레임 리스트의 인덱스 범위를 초과했습니다. Index: $index, Size: ${framePersonList.size}")
-                        }
+                    else {
+                        showError("프레임 리스트의 인덱스 범위를 초과했습니다. Index: $index, Size: ${framePersonList.size}")
                     }
                 }
+            }
 
-                withContext(Dispatchers.Main) {
-                    setRv(feedbackMessages) // 피드백 메시지 리스트를 setRv에 전달
-                    loadingDialog.dismiss()
-                    btnNext.visibility = Button.VISIBLE
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-                withContext(Dispatchers.Main) {
-                    showError("오류가 발생했습니다: ${e.localizedMessage}")
-                    loadingDialog.dismiss()
-                }
+            withContext(Dispatchers.Main) {
+                setRv(feedbackMessages) // 피드백 메시지 리스트를 setRv에 전달
+                progressBar.visibility=View.GONE
+
+                btnNext.visibility = Button.VISIBLE
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            withContext(Dispatchers.Main) {
+                showError("오류가 발생했습니다: ${e.localizedMessage}")
+                progressBar.visibility=View.GONE
+
             }
         }
     }
@@ -290,7 +293,9 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
     }
 
 
-    fun extractFrames(context: Context, videoUri: Uri, frameIntervalMs: Long): List<Bitmap> {
+    private suspend fun extractFrames(context: Context, videoUri: Uri, frameIntervalMs: Long): List<Bitmap> = withContext(Dispatchers.IO){
+
+
         val retriever = MediaMetadataRetriever()
         val frames = mutableListOf<Bitmap>()
 
@@ -302,50 +307,76 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
                 val duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)?.toLong() ?: 0L
                 var currentTime = 0L
 
-                while (currentTime < duration) {
-                    val frame = retriever.getFrameAtTime(currentTime * 1000, MediaMetadataRetriever.OPTION_CLOSEST_SYNC)
+                while (currentTime < duration*1000) {
+                    val frame = retriever.getFrameAtTime(currentTime , MediaMetadataRetriever.OPTION_CLOSEST) ///  MediaMetadataRetriever.OPTION_CLOSEST -> OPTION_CLOSEST_SYNC 속도는 엄청 느려지는데 프레임 정확도 상승
                     frames.add(frame!!);
-                    currentTime += frameIntervalMs
+                    currentTime += frameIntervalMs*1000
+//                    Log.d("TAG","------EXTRACT --------${currentTime}")
                 }
             }
         } finally {
             retriever.release()
         }
 
-        return frames
+        frames
     }
 
 
     private fun processVideoUri(uri: Uri) {
-        val frames = extractFrames(this, uri, 200)
-        frameImageList = frames
+        progressBar.visibility=View.VISIBLE
 
-        /// tf 수행
-        runTF()
+        GlobalScope.launch {
+
+            val frames = extractFrames(this@VideoActivity, uri, 300L)
+            frameImageList = frames
+            initScore()
+            /// tf 수행
+            runTF()
+
+        }
+
+
     }
 
 
-    private fun showLoadingDialog(): AlertDialog {
-        val builder = AlertDialog.Builder(this)
-        builder.setView(R.layout.dialog_loading)
-        builder.setCancelable(false)
-        return builder.create().apply { show() }
-    }
 
+    fun initScore(){
+        curTotal=0f
+        curCountFoot=0;
+        curCountArms=0;
+        curCountCenterGravity=0;
+    }
 
     private fun getFeedbackMessage(feedback : Int) : String{
-        if(feedback == -1)
+        if(feedback == -1){
+            curTotal += 1;
             return "사람이 감지되지 않음"
-        else if(feedback == 1)
+        }
+        else if(feedback == 1) {
+            curTotal += 1;
             return "자세 오류 없음"
+        }
         else {
+            curTotal += 1;
+
             var str = "[ERR]"
-            if(feedback % 2 == 0)
+            if(feedback % 2 == 0){
                 str += " 발 정리하세요."
-            if(feedback % 3 == 0)
+                curTotal -= 0.2f;
+                curCountFoot+=1
+
+            }
+            if(feedback % 3 == 0){
                 str += " 팔을 피세요."
-            if(feedback % 5 == 0)
+                curTotal -= 0.2f;
+                curCountArms+=1
+            }
+            if(feedback % 5 == 0) {
                 str += " 무게중심 확인."
+                curTotal -= 0.2f;
+                curCountCenterGravity+=1
+
+            }
             return str
         }
     }
@@ -399,9 +430,9 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
             date = cDate,
             time = cTime,
             location = cLocation,
-            feedback = "feedback",
+            feedback = "[자세 불량] 발: ${curCountFoot*100/frameImageList.size}%, 팔 : ${curCountArms*100/frameImageList.size}% , 무게 중심 : ${curCountCenterGravity*100/frameImageList.size}%",
             logContent = cMemo,
-            score = 55,
+            score = (curTotal/frameImageList.size * 100).roundToInt(),
             climbingImageList = frameImageList,
             shortImageList = listOf(frameImageList[0]), ::closeProgressBar
         )
