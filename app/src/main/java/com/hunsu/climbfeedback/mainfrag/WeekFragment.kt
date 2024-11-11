@@ -1,6 +1,7 @@
 package com.hunsu.climbfeedback.mainfrag
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,9 +11,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hunsu.climbfeedback.ClimbLogActivity
 import com.hunsu.climbfeedback.databinding.FragmentWeekBinding
 import com.hunsu.climbfeedback.db.data.ClimbingLog
 import com.hunsu.climbfeedback.db.data.ClimbingLogViewModel
+import com.hunsu.climbfeedback.db.data.TestAddClimbingLogActivity
 import com.hunsu.climbfeedback.mainfrag.adapter.AdapterClimbLog
 import com.hunsu.climbfeedback.mainfrag.adapter.CalendarVPAdatper
 import java.text.SimpleDateFormat
@@ -98,11 +101,19 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
 
     }
 
-    fun setCurLog(log: ClimbingLog){
+    fun setCurLog(curindex:Int,log: ClimbingLog){
         binding!!.tvPlace.text="${log.location}"
         binding!!.tvTime.text="${log.time}"
         binding!!.tvFeedback.text="${log.feedback}"
         binding!!.tvLogcontent.text="${log.logContent}"
+
+        binding!!.btnShowDetail.isEnabled=true
+        binding!!.btnShowDetail.setOnClickListener {
+            val intent = Intent(requireContext(), ClimbLogActivity::class.java)
+            intent.putExtra("selectedDateFormat", selectedDayDateFormat)
+            intent.putExtra("selectedIndex", curindex)
+            startActivity(intent)
+        }
 
     }
 

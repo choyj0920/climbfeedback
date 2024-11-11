@@ -59,7 +59,7 @@ class AdapterClimbLog(
         }
 
         holder.binding.frameImageView.setOnClickListener{
-            parent.setCurLog(thisLog)
+            parent.setCurLog(position,thisLog)
         }
     }
 

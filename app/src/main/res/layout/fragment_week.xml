@@ -280,7 +280,7 @@
         android:paddingVertical="10dp"
         android:paddingHorizontal="25dp"
 
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/btn_show_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -300,74 +300,99 @@
             android:layout_height="160dp"
             android:layout_marginBottom="20dp"/>
 
-        <LinearLayout
-
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:background="@drawable/rounded_box_gray2"
-            android:elevation="20dp"
-            android:orientation="vertical"
+            android:elevation="10dp"
             android:paddingHorizontal="20dp"
-            android:paddingVertical="15dp">
+            android:paddingVertical="15dp"
+            android:layout_height="match_parent">
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:scrollbars="vertical"
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/placeb"
-                    android:layout_marginEnd="10dp"/>
-                <TextView
-                    android:id="@+id/tv_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="- memo1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_gravity="center"
+                        android:layout_height="15dp"
+                        android:src="@drawable/placeb"
+                        android:layout_marginEnd="10dp"/>
+                    <TextView
+                        android:id="@+id/tv_place"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/timeb"
+                        android:layout_marginEnd="10dp"/>
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_feedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text=" - "
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tv_logcontent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" - "
                     android:textColor="@color/black" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:src="@drawable/timeb"
-                    android:layout_marginEnd="10dp"/>
-                <TextView
-                    android:id="@+id/tv_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="- memo2"
-                    android:textColor="@color/black" />
-            </LinearLayout>
+
+        </ScrollView>
 
 
-            <TextView
-                android:id="@+id/tv_feedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="- memo3"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_logcontent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="- memo4"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
 
 
     </LinearLayout>
 
 
+    <Button
+        android:id="@+id/btn_show_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:enabled="false"
+        android:padding="10dp"
+        android:layout_marginBottom="30dp"
+        android:text="상세보기"
+        android:textColor="@color/gray_2"
 
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 
