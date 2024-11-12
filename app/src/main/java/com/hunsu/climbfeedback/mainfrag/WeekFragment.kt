@@ -63,12 +63,11 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
 
         dayLogs =viewModel.climbingLogs.get(selectedDayDateFormat);
 
-        binding!!.tvClimbCount.text="등반 횟수 : ${if(dayLogs==null)  0 else dayLogs!!.size }"
         if(dayLogs!=null){
             var score =dayLogs!!.sumOf { it.score }/dayLogs!!.size.toDouble()
             binding!!.trackScore.progress=score.roundToInt()
             binding!!.tvScore.text="${score.roundToInt()}점"
-
+            binding!!.todayClimbnum.text="오늘의 등반 (등반 횟수 : ${dayLogs!!.size}회)"
 
         }
 
@@ -106,6 +105,7 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
         var score = log.score
         binding!!.tvScore.text="${score}점"
         binding!!.trackScore.progress=score
+
         binding!!.tvPlace.text="${log.location}"
         binding!!.tvTime.text="${log.time}"
         binding!!.tvFeedback.text="${log.feedback}"
@@ -141,12 +141,12 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
         selectedDayDateFormat = date.toString()  // selectedDate를 String 형식으로 변환
         dayLogs = viewModel.climbingLogs.get(selectedDayDateFormat)
         binding!!.scoreTitle.text = "일일 평균 안정성 점수"
-        binding!!.tvClimbCount.text = "등반 횟수 : ${if (dayLogs == null) 0 else dayLogs!!.size}"
 
         if (dayLogs != null) {
             val score = dayLogs!!.sumOf { it.score } / dayLogs!!.size.toDouble()
             binding!!.trackScore.progress = score.roundToInt()
             binding!!.tvScore.text = "${score.roundToInt()}점"
+            binding!!.todayClimbnum.text="오늘의 등반 (등반 횟수 : ${dayLogs!!.size}회)"
         }
 
         val logListManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
@@ -160,7 +160,6 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
             }
         }
         else{
-            binding!!.tvClimbCount.text = "등반 횟수 : 0"
             binding!!.trackScore.progress = 0
             binding!!.tvScore.text = " "
             binding!!.rvLogs.visibility = View.INVISIBLE
