@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/gray_6"
     android:paddingHorizontal="10dp"
     android:maxHeight="90dp"
     android:orientation="horizontal">
@@ -12,9 +13,8 @@
         android:layout_height="90dp"
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/img"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="10dp" />
 
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
