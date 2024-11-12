@@ -164,10 +164,11 @@
             android:orientation="vertical"
             >
             <TextView
+                android:id="@+id/score_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosanskr_bold"
-                android:text="안정성 점수"
+                android:text="일일 평균 안정성 점수"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -230,35 +231,20 @@
                 android:textSize="16dp"
                 />
 
-            <TextView
+            <Button
+                android:id="@+id/btn_show_detail"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/notosanskr_bold"
-                android:paddingTop="0dp"
-                android:paddingStart="20dp"
-                android:minWidth="140dp"
-                android:text="부족 "
-                android:textColor="#FC174E"
-                android:background="@drawable/rounded_box_white2"
-                android:elevation="10dp"
-                android:textSize="15dp"
-                android:layout_marginBottom="9dp"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:fontFamily="@font/notosanskr_bold"
-                android:paddingTop="0dp"
-                android:paddingStart="20dp"
-                android:minWidth="140dp"
-                android:text="주의"
-                android:textColor="#FFA800"
-                android:background="@drawable/rounded_box_white2"
-                android:elevation="10dp"
-                android:textSize="15dp"
-                />
+                android:enabled="false"
+                android:padding="10dp"
+                android:layout_marginBottom="30dp"
+                android:text="상세보기"
+                android:textColor="@color/gray_2"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
 
 
@@ -280,7 +266,7 @@
         android:paddingVertical="10dp"
         android:paddingHorizontal="25dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/btn_show_detail"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
@@ -300,16 +286,10 @@
             android:layout_height="160dp"
             android:layout_marginBottom="20dp"/>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:background="@drawable/rounded_box_gray2"
-            android:elevation="10dp"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="15dp"
-            android:layout_height="match_parent">
+
             <LinearLayout
                 android:scrollbars="vertical"
-
+                android:background="@drawable/rounded_box_gray2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -371,7 +351,7 @@
             </LinearLayout>
 
 
-        </ScrollView>
+
 
 
 
@@ -379,20 +359,7 @@
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/btn_show_detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:enabled="false"
-        android:padding="10dp"
-        android:layout_marginBottom="30dp"
-        android:text="상세보기"
-        android:textColor="@color/gray_2"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 

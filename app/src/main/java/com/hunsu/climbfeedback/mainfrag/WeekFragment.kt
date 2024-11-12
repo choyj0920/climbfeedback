@@ -102,6 +102,10 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
     }
 
     fun setCurLog(curindex:Int,log: ClimbingLog){
+        binding!!.scoreTitle.text = "${curindex+1}번 등반 안정성 점수"
+        var score = log.score
+        binding!!.tvScore.text="${score}점"
+        binding!!.trackScore.progress=score
         binding!!.tvPlace.text="${log.location}"
         binding!!.tvTime.text="${log.time}"
         binding!!.tvFeedback.text="${log.feedback}"
@@ -136,6 +140,7 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
 
         selectedDayDateFormat = date.toString()  // selectedDate를 String 형식으로 변환
         dayLogs = viewModel.climbingLogs.get(selectedDayDateFormat)
+        binding!!.scoreTitle.text = "일일 평균 안정성 점수"
         binding!!.tvClimbCount.text = "등반 횟수 : ${if (dayLogs == null) 0 else dayLogs!!.size}"
 
         if (dayLogs != null) {
