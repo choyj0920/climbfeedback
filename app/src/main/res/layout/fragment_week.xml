@@ -158,7 +158,7 @@
         android:background="@drawable/rounded_box_white2"
         android:elevation="10dp">
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -214,11 +214,78 @@
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1">
 
+            <LinearLayout
+                android:id="@+id/armslot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:id="@+id/armtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:text=""
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/armstb"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/legslot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:id="@+id/legtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:text=""
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+                <ImageView
+                    android:id="@+id/legstb"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@null" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/gslot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="5dp">
+                <TextView
+                    android:id="@+id/gtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosanskr_bold"
+                    android:text=""
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+                <ImageView
+                    android:id="@+id/gstb"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@null" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_show_detail"
@@ -226,10 +293,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:enabled="false"
-                android:padding="0dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginBottom="10dp"
                 android:text="상세보기"
+                android:includeFontPadding="false"
                 android:fontFamily="@font/notosanskr_bold"
                 android:textColor="@color/gray_2"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -252,7 +317,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-
         android:paddingVertical="10dp"
         android:paddingHorizontal="25dp"
 
@@ -268,8 +332,7 @@
             android:text="오늘의 등반"
             android:fontFamily="@font/notosanskr_bold"
             android:textSize="14sp"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_logs"
@@ -279,6 +342,7 @@
 
 
             <LinearLayout
+                android:id="@+id/diaryitem"
                 android:scrollbars="vertical"
                 android:background="@drawable/rounded_box_gray2"
                 android:layout_width="match_parent"
@@ -288,11 +352,15 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_vertical">
 
                     <ImageView
-                        android:layout_width="15dp"
                         android:layout_gravity="center"
+                        android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:src="@drawable/placeb"
                         android:layout_marginEnd="10dp"/>
@@ -300,7 +368,9 @@
                         android:id="@+id/tv_place"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:text=" - "
+                        android:includeFontPadding="false"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
@@ -308,7 +378,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center_vertical">
                     <ImageView
                         android:layout_gravity="center"
                         android:layout_width="15dp"
@@ -319,25 +392,34 @@
                         android:id="@+id/tv_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:includeFontPadding="false"
+                        android:text=" - "
                         android:textColor="@color/black" />
                 </LinearLayout>
 
-
-                <TextView
-                    android:id="@+id/tv_feedback"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:text=" - "
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/tv_logcontent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" - "
-                    android:textColor="@color/black" />
+                    android:orientation="horizontal"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center_vertical">
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/pencil"
+                        android:layout_marginEnd="10dp"/>
+                    <TextView
+                        android:id="@+id/tv_logcontent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text=" - "
+                        android:textColor="@color/black" />
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -101,7 +101,7 @@ class ClimbingLogViewModel : ViewModel() {
                     logContent = logContent,
                     climbingImageSize = climbingImageList?.size,
                     shortImageSize = shortImageList?.size,
-                    score = score
+                    score = score,
                 )
             )
 
