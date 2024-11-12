@@ -28,4 +28,8 @@
         <item name="android:textColor">@color/white</item>
         <item name="backgroundTint">@color/transparent</item>
     </style>
+
+    <style name="Theme.SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/logo_climate</item>
+    </style>
 </resources>
