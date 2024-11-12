@@ -118,43 +118,43 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
             .toList()
         when(numbers[0]){
             in 0..33 -> {
-                binding!!.legtitle.text = "다리 : 훌륭합니다"
+                binding!!.legtitle.text = "다리 : 훌륭"
                 binding!!.legstb.setImageResource(R.drawable.good)
             }
             in 34..66 -> {
-                binding!!.legtitle.text = "다리 : 주의하세요"
+                binding!!.legtitle.text = "다리 : 주의"
                 binding!!.legstb.setImageResource(R.drawable.hmm)
             }
             in 67..100 -> {
-                binding!!.legtitle.text = "다리 : 분발하세요"
+                binding!!.legtitle.text = "다리 : 경고"
                 binding!!.legstb.setImageResource(R.drawable.bad)
             }
         }
         when(numbers[1]){
             in 0..33 -> {
-                binding!!.armtitle.text = "팔 : 훌륭합니다"
+                binding!!.armtitle.text = "팔 : 훌륭"
                 binding!!.armstb.setImageResource(R.drawable.good)
             }
             in 34..66 -> {
-                binding!!.armtitle.text = "팔 : 주의하세요"
+                binding!!.armtitle.text = "팔 : 주의"
                 binding!!.armstb.setImageResource(R.drawable.hmm)
             }
             in 67..100 -> {
-                binding!!.armtitle.text = "팔 : 분발하세요"
+                binding!!.armtitle.text = "팔 : 경고"
                 binding!!.armstb.setImageResource(R.drawable.bad)
             }
         }
         when(numbers[2]){
             in 0..33 -> {
-                binding!!.gtitle.text = "무게중심 : 훌륭합니다"
+                binding!!.gtitle.text = "무게중심 : 훌륭"
                 binding!!.gstb.setImageResource(R.drawable.good)
             }
             in 34..66 -> {
-                binding!!.gtitle.text = "무게중심 : 주의하세요"
+                binding!!.gtitle.text = "무게중심 : 주의"
                 binding!!.gstb.setImageResource(R.drawable.hmm)
             }
             in 67..100 -> {
-                binding!!.gtitle.text = "무게중심 : 분발하세요"
+                binding!!.gtitle.text = "무게중심 : 경고"
                 binding!!.gstb.setImageResource(R.drawable.bad)
             }
         }
