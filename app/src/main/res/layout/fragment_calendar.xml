@@ -22,129 +22,135 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_mate_with_month"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/notosanskr_extrabold"
-        android:text="메이트와 함께한 n 월의 클라이밍"
-        android:textColor="#DADADA"
-        android:textSize="14dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="0dp"
+        android:scrollbars="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         >
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="wrap_content"
-            android:minWidth="120dp"
-            android:layout_height="72dp"
-            android:background="@drawable/rounded_box_gray"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosanskr_bold"
-                android:text="클라이밍 횟수"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                />
-            <TextView
-                android:id="@+id/tv_climb_count"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosanskr_medium"
-                android:text="n번"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                />
-        </LinearLayout>
-
-
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_marginLeft="8dp"
-            android:layout_width="wrap_content"
-            android:minWidth="120dp"
-            android:layout_height="72dp"
-            android:background="@drawable/rounded_box_gray"
-
-
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosanskr_bold"
-                android:text="평균 안정성 점수"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                />
-            <TextView
-                android:id="@+id/tv_climb_avg_score"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosanskr_medium"
-                android:text="n/100"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                />
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-
-
-    <TextView
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/notosanskr_extrabold"
-        android:text="오늘의 클라이밍"
-        android:textColor="#DADADA"
-        android:textSize="14dp"
-        />
-
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:minWidth="120dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="20dp"
-        android:layout_height="72dp"
-        android:background="@drawable/rounded_box_gray"
-
-
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
-            />
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tv_mate_with_month"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskr_extrabold"
+                android:text="메이트와 함께한 n 월의 클라이밍"
+                android:textColor="#DADADA"
+                android:textSize="14dp" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="0dp"
+                >
+
+                <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:minWidth="120dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/rounded_box_gray"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:text="클라이밍 횟수"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_climb_count"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="n번"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_marginLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:minWidth="120dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/rounded_box_gray"
+
+
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosanskr_bold"
+                        android:text="평균 안정성 점수"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_climb_avg_score"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/notosanskr_medium"
+                        android:text="n/100"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/notosanskr_extrabold"
+                android:text="오늘의 클라이밍"
+                android:textColor="#DADADA"
+                android:textSize="14dp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:minWidth="120dp"
+                android:id="@+id/rv_today_log"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="60dp"
+                android:layout_height="100dp"
+                android:background="@drawable/rounded_box_gray"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="3dp"
+                android:gravity="center"
+                android:orientation="horizontal"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
 
 
 

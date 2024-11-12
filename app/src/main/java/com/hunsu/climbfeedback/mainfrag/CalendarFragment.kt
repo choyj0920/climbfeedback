@@ -1,15 +1,12 @@
 package com.hunsu.climbfeedback.mainfrag
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -20,8 +17,10 @@ import com.hunsu.climbfeedback.db.ClimbingLogDatabaseHelper
 import com.hunsu.climbfeedback.db.data.ClimbingLog
 import com.hunsu.climbfeedback.db.data.ClimbingLogViewModel
 import com.hunsu.climbfeedback.mainfrag.adapter.AdapterMonth
+import com.hunsu.climbfeedback.mainfrag.adapter.AdapterTodayClimbLog
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 
 class CalendarFragment : Fragment() {
@@ -50,6 +49,7 @@ class CalendarFragment : Fragment() {
         setBottomText();
 
 
+        getTodayLogs()
 
         return binding!!.root
 
@@ -92,12 +92,42 @@ class CalendarFragment : Fragment() {
         }
         var avgScore =curMonthLogs.sumOf { it.score }/curMonthLogs.size.toDouble()
         binding!!.tvClimbAvgScore.setText(String.format("%.2f/100",avgScore))
-        binding!!.tvClimbCount.setText("${curMonthLogs.size}번")
+        if(curMonthLogs.isEmpty()){
+            binding!!.tvClimbAvgScore.setText("---/100")
+            binding!!.tvClimbCount.setText("0 번")
+        }else{
+            binding!!.tvClimbAvgScore.setText(String.format("%.2f/100",avgScore))
+            binding!!.tvClimbCount.setText("${curMonthLogs.size}번")
+        }
 
 
     }
 
 
+
+    fun getTodayLogs(){
+
+        var transFormat = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+        var transFormat2 = SimpleDateFormat("MM/dd", Locale.KOREA)
+        var today=Calendar.getInstance().time;
+
+        var todayDateFormat = transFormat.format(today);
+
+        var todayLogs:MutableList<ClimbingLog>?=viewModel.climbingLogs.get(todayDateFormat)
+        val logListManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+
+        if(todayLogs ==null ||todayLogs.size==0){
+            todayLogs= arrayListOf()
+        }
+
+        val _logListAdapter = AdapterTodayClimbLog(this,todayLogs!! ,transFormat2.format(today))
+        binding!!.rvTodayLog.apply {
+            layoutManager=logListManager
+            adapter=_logListAdapter
+        }
+
+
+    }
 
 
     fun init_rv(){
@@ -119,6 +149,11 @@ class CalendarFragment : Fragment() {
 
                         val month = SimpleDateFormat("M").format(curCal.time)
                         binding!!.tvMateWithMonth.text="메이트와 함께 한, ${month}월의 클라이밍"
+
+
+                        binding!!.tvClimbCount
+
+                        setBottomText()
 
 
                     }
@@ -167,6 +202,7 @@ class CalendarFragment : Fragment() {
         fragmentTransaction.commit()
 
     }
+
 
 
 }
