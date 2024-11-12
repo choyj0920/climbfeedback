@@ -101,7 +101,7 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
     }
 
     fun setCurLog(curindex:Int,log: ClimbingLog){
-        binding!!.scoreTitle.text = "${curindex+1}번 등반 안정성 점수"
+        binding!!.scoreTitle.text = "등반 #${curindex+1} 안정성 점수"
         var score = log.score
         binding!!.tvScore.text="${score}점"
         binding!!.trackScore.progress=score
