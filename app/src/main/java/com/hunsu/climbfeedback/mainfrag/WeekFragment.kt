@@ -160,6 +160,7 @@ class WeekFragment(var selectedDate:Date) : Fragment(), IDateClickListener {
             }
         }
         else{
+
             binding!!.trackScore.progress = 0
             binding!!.tvScore.text = " "
             binding!!.rvLogs.visibility = View.INVISIBLE
