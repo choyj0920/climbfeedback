@@ -1,6 +1,5 @@
-<img src="app/src/main/res/drawable/start_logo.png">
-
 # 🚀 Climate, 당신의 클라이밍 메이트
+<img src="app/src/main/res/drawable/start_logo.png">
 
 <br>
 
