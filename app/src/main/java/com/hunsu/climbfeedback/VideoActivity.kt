@@ -308,7 +308,7 @@ class VideoActivity : AppCompatActivity(),DiaryFragment.OnInputListener {
                 var currentTime = 0L
 
                 while (currentTime < duration*1000) {
-                    val frame = retriever.getFrameAtTime(currentTime , MediaMetadataRetriever.OPTION_CLOSEST) ///  MediaMetadataRetriever.OPTION_CLOSEST -> OPTION_CLOSEST_SYNC 속도는 엄청 느려지는데 프레임 정확도 상승
+                    val frame = retriever.getFrameAtTime(currentTime , MediaMetadataRetriever.OPTION_CLOSEST_SYNC) ///  MediaMetadataRetriever.OPTION_CLOSEST -> OPTION_CLOSEST_SYNC 속도는 엄청 느려지는데 프레임 정확도 상승
                     frames.add(frame!!);
                     currentTime += frameIntervalMs*1000
 //                    Log.d("TAG","------EXTRACT --------${currentTime}")
