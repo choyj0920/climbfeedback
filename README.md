@@ -53,5 +53,5 @@
 
 <br>
 
-## 💻 실행 예시
-<img src="res/drawable/appImages.png" width="800">
+## 💻 실행 예시as
+<img src="app/src/main/res/drawable/appImages.png" width="800">
